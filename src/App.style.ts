@@ -1,7 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 
 export const theme = {
-  mobileBreakpoint: 768,
+  mobileBreakpoint: 845,
   dark: {
     primary400: "#1E213A",
     primary500: "#100E1D",

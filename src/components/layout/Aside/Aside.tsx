@@ -10,6 +10,13 @@ import Measure from "../../ui/Measure/Measure";
 import Button from "../../ui/Button/Button";
 import IconButton from "../../ui/Button/IconButton";
 
+import useHttp from "../../../hooks/use-http";
+import { useAppDispatch } from "../../../store";
+import { useEffect } from "react";
+import { fetchWeatherAction } from "../../../store/weather-slice/weather-actions";
+import { getLocation } from "../../../services/geolocation-api";
+import Loader from "../../ui/Loader/Loader";
+
 const Aside: React.FC = () => {
   const searchBtnStyles: Interpolation<React.CSSProperties> = {
     position: "absolute",
@@ -22,6 +29,23 @@ const Aside: React.FC = () => {
     top: "2rem",
     right: "2rem",
   };
+
+  const { isLoading, error, sendRequest } = useHttp({
+    loading: true,
+    error: null,
+  });
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    const onInit = async () => {
+      const currentLocation = await getLocation();
+      if (currentLocation)
+        sendRequest(() => dispatch(fetchWeatherAction(currentLocation)));
+    };
+
+    onInit();
+  }, []);
 
   return (
     <StyledAside>
@@ -54,7 +78,12 @@ const Aside: React.FC = () => {
         draggable={false}
         alt="Todays weather icon"
       />
-      <Measure $variant={"large"} value="15" unit="°C" />
+      {!isLoading ? (
+        <Measure $variant={"large"} value="15" unit="°C" />
+      ) : (
+        <Loader size={80}></Loader>
+      )}
+
       <P>Shower</P>
       <Button $styles={searchBtnStyles}>Search for places</Button>
       <IconButton variant="location" $styles={locationBtnStyles}></IconButton>

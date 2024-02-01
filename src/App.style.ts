@@ -1,4 +1,8 @@
-import { createGlobalStyle } from "styled-components";
+import { Interpolation, createGlobalStyle } from "styled-components";
+
+export interface Styles {
+  $styles?: Interpolation<React.CSSProperties>;
+}
 
 export const theme = {
   mobileBreakpoint: 845,
@@ -9,6 +13,7 @@ export const theme = {
     accent600: "#A09FB1",
     accent700: "#6E707A",
     accent800: "#61636D",
+    contrast500: "#EB6E4B",
   },
   light: {
     primary500: "",

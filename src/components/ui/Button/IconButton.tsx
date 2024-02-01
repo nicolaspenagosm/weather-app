@@ -1,4 +1,5 @@
-import { StyledIconButton, Styles } from "./Button.style";
+import { Styles } from "../../../App.style";
+import { StyledIconButton } from "./Button.style";
 
 export interface IconButtonProps extends Styles {
   variant: "location" | "celsius" | "fahrenheit";

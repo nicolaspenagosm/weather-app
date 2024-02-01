@@ -5,50 +5,53 @@ import cloud1Left from "../../../assets/cloud-1-left.svg";
 import cloud2Left from "../../../assets/cloud-2-left.svg";
 import cloud1Right from "../../../assets/cloud-1-right.svg";
 import cloud2Right from "../../../assets/cloud-2-right.svg";
+import locationPin from "../../../assets/location-pin.svg";
 
 import Measure from "../../ui/Measure/Measure";
 import Button from "../../ui/Button/Button";
 import IconButton from "../../ui/Button/IconButton";
-
-import useHttp from "../../../hooks/use-http";
-import { useAppDispatch } from "../../../store";
-import { useEffect } from "react";
-import { fetchWeatherAction } from "../../../store/weather-slice/weather-actions";
-import { getLocation } from "../../../services/geolocation-api";
 import Loader from "../../ui/Loader/Loader";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../store/index";
+import { fromKelvinToCelsius } from "../../../utils/temp";
+import { Footer } from "./Aside.style";
+import { getTodayDate } from "../../../utils/date";
+import { Img } from "./Aside.style";
+import { useEffect, useState } from "react";
+const searchBtnStyles: Interpolation<React.CSSProperties> = {
+  position: "absolute",
+  top: "2rem",
+  left: "2rem",
+};
 
-const Aside: React.FC = () => {
-  const searchBtnStyles: Interpolation<React.CSSProperties> = {
-    position: "absolute",
-    top: "2rem",
-    left: "2rem",
-  };
+const locationBtnStyles: Interpolation<React.CSSProperties> = {
+  position: "absolute",
+  top: "2rem",
+  right: "2rem",
+};
 
-  const locationBtnStyles: Interpolation<React.CSSProperties> = {
-    position: "absolute",
-    top: "2rem",
-    right: "2rem",
-  };
+const asidePassingStyles: Interpolation<React.CSSProperties> = {
+  padding: "1rem 1rem 6rem 1rem",
+};
 
-  const { isLoading, error, sendRequest } = useHttp({
-    loading: true,
-    error: null,
-  });
+const Aside: React.FC<{ isLoading: boolean }> = ({ isLoading }) => {
 
-  const dispatch = useAppDispatch();
+  const currentWeather = useSelector(
+    (state: RootState) => state.weather.currentWeather
+  );
+  const [imgOpacity, setImageOpacity] = useState("0");
+
+  const asideStyles = currentWeather ? "" : asidePassingStyles;
+  const now = new Date();
 
   useEffect(() => {
-    const onInit = async () => {
-      const currentLocation = await getLocation();
-      if (currentLocation)
-        sendRequest(() => dispatch(fetchWeatherAction(currentLocation)));
-    };
-
-    onInit();
-  }, []);
+    setTimeout(() => {
+      setImageOpacity("1");
+    }, 150);
+  }, [currentWeather]);
 
   return (
-    <StyledAside>
+    <StyledAside $styles={asideStyles}>
       <BackgroundImage
         src={cloud1Left}
         $top="5rem"
@@ -73,20 +76,37 @@ const Aside: React.FC = () => {
         $right="0"
         alt="Decorative cloud in the background"
       />
-      <img
-        src="https://openweathermap.org/img/wn/10d@4x.png"
-        draggable={false}
-        alt="Todays weather icon"
-      />
-      {!isLoading ? (
-        <Measure $variant={"large"} value="15" unit="°C" />
-      ) : (
-        <Loader size={80}></Loader>
-      )}
 
-      <P>Shower</P>
-      <Button $styles={searchBtnStyles}>Search for places</Button>
-      <IconButton variant="location" $styles={locationBtnStyles}></IconButton>
+      {currentWeather ? (
+        <>
+          <Img
+            src={`https://openweathermap.org/img/wn/${
+              currentWeather!.icon
+            }@4x.png`}
+            alt="Todays weather icon"
+            draggable={false}
+            $styles={{ opacity: imgOpacity }}
+          />
+
+          <Measure
+            $variant={"large"}
+            value={`${fromKelvinToCelsius(+currentWeather!.temperature)}`}
+            unit="°C"
+          />
+          <P>{currentWeather.main}</P>
+          <Button $styles={searchBtnStyles}>Search for places</Button>
+          <IconButton variant="location" $styles={locationBtnStyles} />
+          <Footer>
+            <p>Today &#8226; {getTodayDate(now)}</p>
+            <div>
+              <img src={locationPin} />
+              <p>Cali</p>
+            </div>
+          </Footer>
+        </>
+      ) : (
+        <Loader size={80} variant="spinner" />
+      )}
     </StyledAside>
   );
 };

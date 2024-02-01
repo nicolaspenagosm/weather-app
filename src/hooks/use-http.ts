@@ -18,9 +18,7 @@ const useHttp = (initialState: State) => {
     try {
       setIsLoading(true);
       setError(null);
-      console.log("1");
       await request();
-      console.log("2");
       setIsLoading(false);
     } catch (err) {
       setError("Something went wrong!");

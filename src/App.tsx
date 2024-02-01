@@ -6,6 +6,7 @@ import Dashboard from "./components/layout/Dashboard/Dashboard";
 import { getLocation } from "./services/geolocation-api";
 import { useAppDispatch } from "./store";
 import useHttp from "./hooks/use-http";
+import { fetchWeatherAction } from "./store/weather-slice/weather-actions";
 
 const Root = styled.div`
   display: flex;
@@ -17,12 +18,31 @@ const Root = styled.div`
 `;
 
 function App() {
+  const { isLoading, error, sendRequest } = useHttp({
+    loading: true,
+    error: null,
+  });
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    const onInit = async () => {
+    
+      const currentLocation = await getLocation();
+  
+      if (currentLocation)
+        sendRequest(() => dispatch(fetchWeatherAction(currentLocation)));
+    };
+
+    onInit();
+  }, []);
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Root>
-        <Aside />
-        <Dashboard />
+        <Aside isLoading={isLoading} />
+        <Dashboard isLoading={isLoading} />
       </Root>
     </ThemeProvider>
   );

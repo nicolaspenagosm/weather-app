@@ -1,7 +1,6 @@
 import styled, { Interpolation } from "styled-components";
-export interface Styles {
-  $styles?: Interpolation<React.CSSProperties>;
-}
+import { Styles } from "../../../App.style";
+
 
 export const BaseButton = styled.button<Styles>`
   background-color: ${({ theme }) => theme.dark.accent700};

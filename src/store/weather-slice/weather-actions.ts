@@ -7,15 +7,19 @@ export const fetchWeatherAction = (params: Position) => {
   return async (dispatch: Dispatch) => {
     const data = (await OpenWeatherAPI.getCurrentWeather(params)).data;
 
+    console.log(data);
     const mappedWeatherData: Weather = {
       id: data.id,
       main: data.weather[0].main,
       description: data.weather[0].description,
       icon: data.weather[0].icon,
       windSpeed: data.wind.speed,
+      winDeg: data.wind.deg,
       humidity: data.main.humidity,
       pressure: data.main.pressure,
       temperature: data.main.temp,
+      place: data.name,
+      visibility: data.visibility,
     };
 
     dispatch(weatherActions.setCurrentWeather(mappedWeatherData));

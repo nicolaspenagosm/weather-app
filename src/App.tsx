@@ -41,8 +41,8 @@ function App() {
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Root>
-        <Aside isLoading={isLoading} />
-        <Dashboard isLoading={isLoading} />
+        <Aside />
+        <Dashboard  />
       </Root>
     </ThemeProvider>
   );

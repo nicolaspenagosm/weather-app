@@ -1,10 +1,21 @@
 import Loader from "../../ui/Loader/Loader";
 import { StyledDashboard } from "./Dashboard.style";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../store";
+import TodaysHighlights from "../../weather/TodaysHightlights/TodayHightlight";
 
-const Dashboard: React.FC<{ isLoading: boolean }> = ({ isLoading }) => {
+const Dashboard: React.FC = () => {
+  const currentWeather = useSelector(
+    (state: RootState) => state.weather.currentWeather
+  );
+
   return (
     <StyledDashboard>
-      {isLoading ? <Loader variant="cloud" size={175} /> : <></>}
+      {currentWeather ? (
+        <TodaysHighlights />
+      ) : (
+        <Loader variant="cloud" size={175} />
+      )}
     </StyledDashboard>
   );
 };

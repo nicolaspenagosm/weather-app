@@ -1,3 +1,4 @@
+import { Styles } from "../../../App.style";
 import { StyledMeasure, Variant } from "./Measure.style";
 
 export interface MeasureProps extends Variant {
@@ -5,9 +6,14 @@ export interface MeasureProps extends Variant {
   unit: string;
 }
 
-const Measure: React.FC<MeasureProps> = ({ $variant, value, unit }) => {
+const Measure: React.FC<MeasureProps & Styles> = ({
+  $variant,
+  value,
+  unit,
+  $styles,
+}) => {
   return (
-    <StyledMeasure $variant={$variant}>
+    <StyledMeasure $variant={$variant} $styles={$styles}>
       <h1>{value}</h1>
       <p>{unit}</p>
     </StyledMeasure>

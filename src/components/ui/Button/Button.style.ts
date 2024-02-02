@@ -1,6 +1,5 @@
-import styled, { Interpolation } from "styled-components";
+import styled from "styled-components";
 import { Styles } from "../../../App.style";
-
 
 export const BaseButton = styled.button<Styles>`
   background-color: ${({ theme }) => theme.dark.accent700};
@@ -13,7 +12,6 @@ export const BaseButton = styled.button<Styles>`
   -o-transition: background-color 0.15s;
   -moz-transition: background-color 0.15s;
   ${({ $styles }) => $styles};
-
   &:hover {
     background-color: ${({ theme }) => theme.dark.accent800};
   }

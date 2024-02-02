@@ -9,3 +9,5 @@ export const StyledDashboard = styled.main`
     width: 75%;
   }
 `;
+
+

@@ -1,22 +1,36 @@
 import styled from "styled-components";
-import { MeasureProps } from "./Measure";
+import { Styles } from "../../../App.style";
+
 
 export interface Variant {
   $variant: "small" | "medium" | "large";
 }
 
-export const StyledMeasure = styled.div<Variant>`
+export const StyledMeasure = styled.div<Variant & Styles>`
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
+  ${({ $styles }) => $styles};
   h1 {
-    font-size: 5rem;
+    font-size: ${({ $variant }) => {
+      if ($variant === "medium") return "3rem";
+
+      return "5rem";
+    }};
     font-weight: 700;
   }
   p {
-    font-size: 2.5rem;
+    font-size: ${({ $variant }) => {
+      if ($variant === "medium") return "1.5rem";
+
+      return "2.5rem";
+    }};
     font-weight: 500;
-    margin-top: 2rem;
+    margin-top: ${({ $variant }) => {
+      if ($variant === "medium") return "1rem";
+      return "2rem";
+    }};
     color: ${({ theme }) => theme.dark.accent600};
   }
 `;

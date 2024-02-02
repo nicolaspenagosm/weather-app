@@ -9,7 +9,10 @@ export interface Weather {
   windSpeed: string;
   humidity: string;
   pressure: string;
-  temperature:string;
+  temperature: string;
+  place: string;
+  winDeg:string
+  visibility:string
 }
 export interface WeatherState {
   currentPosition: Position | null;
@@ -28,7 +31,6 @@ const weatherSlice = createSlice({
   initialState,
   reducers: {
     setCurrentWeather(state, { payload }: PayloadAction<Weather>) {
-      console.log("actualizo")
       state.currentWeather = payload;
     },
     setCurrentPosition(state, { payload }: PayloadAction<Position>) {

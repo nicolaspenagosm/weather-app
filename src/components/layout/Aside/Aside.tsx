@@ -34,8 +34,7 @@ const asidePassingStyles: Interpolation<React.CSSProperties> = {
   padding: "1rem 1rem 6rem 1rem",
 };
 
-const Aside: React.FC<{ isLoading: boolean }> = ({ isLoading }) => {
-
+const Aside: React.FC = () => {
   const currentWeather = useSelector(
     (state: RootState) => state.weather.currentWeather
   );
@@ -100,7 +99,7 @@ const Aside: React.FC<{ isLoading: boolean }> = ({ isLoading }) => {
             <p>Today &#8226; {getTodayDate(now)}</p>
             <div>
               <img src={locationPin} />
-              <p>Cali</p>
+              <p>{currentWeather.place}</p>
             </div>
           </Footer>
         </>

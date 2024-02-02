@@ -2,6 +2,7 @@ import { Interpolation, createGlobalStyle } from "styled-components";
 
 export interface Styles {
   $styles?: Interpolation<React.CSSProperties>;
+  $desktopStyles?: Interpolation<React.CSSProperties>;
 }
 
 export const theme = {
@@ -49,7 +50,7 @@ export const GlobalStyle = createGlobalStyle`
     font: inherit;
     vertical-align: baseline;
     font-family: 'Raleway', sans-serif;
-    font-size: 16px;
+    font-size: 15px;
     color: ${({ theme }) => theme.dark.accent500};
   }
   /* HTML5 display-role reset for older browsers */

@@ -3,6 +3,7 @@ import { StyledDashboard } from "./Dashboard.style";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
 import TodaysHighlights from "../../weather/TodaysHightlights/TodayHightlight";
+import Forecast from "../../weather/Forecast/Forecast";
 
 const Dashboard: React.FC = () => {
   const currentWeather = useSelector(
@@ -12,7 +13,10 @@ const Dashboard: React.FC = () => {
   return (
     <StyledDashboard>
       {currentWeather ? (
-        <TodaysHighlights />
+        <>
+          <Forecast />
+          <TodaysHighlights />
+        </>
       ) : (
         <Loader variant="cloud" size={175} />
       )}

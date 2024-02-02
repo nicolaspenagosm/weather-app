@@ -1,4 +1,4 @@
-export const getTodayDate = (date: Date) => {
+export const parseDate = (date: Date) => {
   const days = [
     "Sunday",
     "Monday",

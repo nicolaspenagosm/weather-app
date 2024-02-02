@@ -1,23 +1,35 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Position } from "../../services/geolocation-api";
 
-export interface Weather {
+// TODO Improve the abstractions of the entities
+export interface CurrentWeather {
   id: string;
   main: string;
-  description: string;
   icon: string;
   windSpeed: string;
   humidity: string;
   pressure: string;
-  temperature: string;
+  temp: string;
   place: string;
-  winDeg:string
-  visibility:string
+  winDeg: string;
+  visibility: string;
+  minTemp?: string;
+  dateTxt?: string;
 }
+
+export interface Wheater {
+  id: string;
+  main: string;
+  icon: string;
+  temp: string;
+  date: number;
+}
+
+export interface WeatherForecast {}
 export interface WeatherState {
   currentPosition: Position | null;
-  currentWeather: Weather | null;
-  forecast: Weather[] | null;
+  currentWeather: CurrentWeather | null;
+  forecast: CurrentWeather[] | null;
 }
 
 const initialState: WeatherState = {
@@ -30,13 +42,13 @@ const weatherSlice = createSlice({
   name: "weather",
   initialState,
   reducers: {
-    setCurrentWeather(state, { payload }: PayloadAction<Weather>) {
+    setCurrentWeather(state, { payload }: PayloadAction<CurrentWeather>) {
       state.currentWeather = payload;
     },
     setCurrentPosition(state, { payload }: PayloadAction<Position>) {
       state.currentPosition = payload;
     },
-    setForecast(state, { payload }: PayloadAction<Weather[]>) {
+    setForecast(state, { payload }: PayloadAction<CurrentWeather[]>) {
       state.forecast = payload;
     },
   },

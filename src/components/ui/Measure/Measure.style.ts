@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { Styles } from "../../../App.style";
 
-
 export interface Variant {
   $variant: "small" | "medium" | "large";
 }
@@ -14,8 +13,7 @@ export const StyledMeasure = styled.div<Variant & Styles>`
   ${({ $styles }) => $styles};
   h1 {
     font-size: ${({ $variant }) => {
-      if ($variant === "medium") return "3rem";
-
+      if ($variant === "medium") return "2.5rem";
       return "5rem";
     }};
     font-weight: 700;
@@ -31,7 +29,7 @@ export const StyledMeasure = styled.div<Variant & Styles>`
       if ($variant === "medium") return "1rem";
       return "2rem";
     }};
-    color: ${({ theme }) => theme.dark.accent600};
+    color: ${({ theme }) => theme.dark.accent700};
   }
 `;
 export const P = styled.p`

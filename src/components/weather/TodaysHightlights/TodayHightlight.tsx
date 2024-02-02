@@ -2,7 +2,7 @@ import {
   HighlightsGrid,
   StyledTodaysHighlights,
 } from "./TodaysHightlight.style";
-import Highlight from "../Hightlight/Highlight";
+import Highlight from "./Hightlight/Highlight";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
 import { round } from "../../../utils/number";
@@ -13,7 +13,7 @@ const TodaysHighlights: React.FC = () => {
   );
   return (
     <StyledTodaysHighlights>
-      <h2>Today's Highlights</h2>
+      <h2>Today’s Hightlights </h2>
       <HighlightsGrid>
         <Highlight
           title="Wind status"

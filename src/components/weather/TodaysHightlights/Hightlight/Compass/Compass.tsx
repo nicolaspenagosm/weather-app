@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { DirArrow, StyledCompass } from "./Compass.styled";
-import arrowVector from "../../../../assets/arrow.svg";
+import arrowVector from "../../../../../assets/arrow.svg";
 import { I } from "../Hightlight.styled";
 
 const Compass: React.FC<{ deg: number }> = ({ deg }) => {
@@ -8,7 +8,6 @@ const Compass: React.FC<{ deg: number }> = ({ deg }) => {
 
   useEffect(() => {
     setTimeout(() => {
-      console.log(deg);
       setAnimStyles({
         transform: `rotate(${deg}deg);`,
       });

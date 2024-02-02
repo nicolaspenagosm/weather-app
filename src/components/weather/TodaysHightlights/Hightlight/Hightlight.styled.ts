@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Styles } from "../../../App.style";
+import { Styles } from "../../../../App.style";
 
 export const H2 = styled.h2`
   text-align: center;

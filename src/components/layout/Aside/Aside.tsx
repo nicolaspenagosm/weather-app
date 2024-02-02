@@ -15,9 +15,10 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../../store/index";
 import { fromKelvinToCelsius } from "../../../utils/temp";
 import { Footer } from "./Aside.style";
-import { getTodayDate } from "../../../utils/date";
+import { parseDate } from "../../../utils/date";
 import { Img } from "./Aside.style";
 import { useEffect, useState } from "react";
+import { getIconUrl } from "../../../utils/image";
 const searchBtnStyles: Interpolation<React.CSSProperties> = {
   position: "absolute",
   top: "2rem",
@@ -79,9 +80,7 @@ const Aside: React.FC = () => {
       {currentWeather ? (
         <>
           <Img
-            src={`https://openweathermap.org/img/wn/${
-              currentWeather!.icon
-            }@4x.png`}
+            src={getIconUrl(currentWeather!.icon, "4")}
             alt="Todays weather icon"
             draggable={false}
             $styles={{ opacity: imgOpacity }}
@@ -89,14 +88,14 @@ const Aside: React.FC = () => {
 
           <Measure
             $variant={"large"}
-            value={`${fromKelvinToCelsius(+currentWeather!.temperature)}`}
+            value={`${fromKelvinToCelsius(+currentWeather!.temp)}`}
             unit="°C"
           />
           <P>{currentWeather.main}</P>
           <Button $styles={searchBtnStyles}>Search for places</Button>
           <IconButton variant="location" $styles={locationBtnStyles} />
           <Footer>
-            <p>Today &#8226; {getTodayDate(now)}</p>
+            <p>Today &#8226; {parseDate(now)}</p>
             <div>
               <img src={locationPin} />
               <p>{currentWeather.place}</p>

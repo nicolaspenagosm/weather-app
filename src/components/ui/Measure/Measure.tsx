@@ -1,5 +1,5 @@
-import { Styles } from "../../../App.style";
-import { StyledMeasure, Variant } from "./Measure.style";
+import { Styles } from "../../../App.styled";
+import { StyledMeasure, Variant } from "./Measure.styled";
 
 export interface MeasureProps extends Variant {
   value: string;

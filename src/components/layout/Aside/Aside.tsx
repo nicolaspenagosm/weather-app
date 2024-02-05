@@ -1,4 +1,4 @@
-import { StyledAside, P, BackgroundImage } from "./Aside.style";
+import { StyledAside, P, BackgroundImage } from "./Aside.styled";
 import { Interpolation } from "styled-components";
 
 import cloud1Left from "../../../assets/cloud-1-left.svg";
@@ -14,11 +14,13 @@ import Loader from "../../ui/Loader/Loader";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store/index";
 import { fromKelvinToCelsius } from "../../../utils/temp";
-import { Footer } from "./Aside.style";
+import { Footer } from "./Aside.styled";
 import { parseDate } from "../../../utils/date";
-import { Img } from "./Aside.style";
+import { Img } from "./Aside.styled";
 import { useEffect, useState } from "react";
 import { getIconUrl } from "../../../utils/image";
+import SideSearchBar from "../../ui/SideSearchBar/SideSearchBar";
+
 const searchBtnStyles: Interpolation<React.CSSProperties> = {
   position: "absolute",
   top: "2rem",
@@ -40,6 +42,15 @@ const Aside: React.FC = () => {
     (state: RootState) => state.weather.currentWeather
   );
   const [imgOpacity, setImageOpacity] = useState("0");
+  const [showSideBar, setShowSideBar] = useState(false);
+
+  const closeSideBar = () => {
+    setShowSideBar(false);
+  };
+
+  const openSideBar = () => {
+    setShowSideBar(true);
+  };
 
   const asideStyles = currentWeather ? "" : asidePassingStyles;
   const now = new Date();
@@ -92,7 +103,14 @@ const Aside: React.FC = () => {
             unit="°C"
           />
           <P>{currentWeather.main}</P>
-          <Button $styles={searchBtnStyles}>Search for places</Button>
+          <Button
+            $styles={searchBtnStyles}
+            onClick={() => {
+              openSideBar();
+            }}
+          >
+            Search for places
+          </Button>
           <IconButton variant="location" $styles={locationBtnStyles} />
           <Footer>
             <p>Today &#8226; {parseDate(now)}</p>
@@ -101,6 +119,11 @@ const Aside: React.FC = () => {
               <p>{currentWeather.place}</p>
             </div>
           </Footer>
+
+          <SideSearchBar
+            showSideBar={showSideBar}
+            closeSideBar={closeSideBar}
+          />
         </>
       ) : (
         <Loader size={80} variant="spinner" />

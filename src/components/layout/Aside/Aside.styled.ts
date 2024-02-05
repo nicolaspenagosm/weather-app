@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Styles } from "../../../App.style";
+import { Styles } from "../../../App.styled";
 
 export interface Position {
   $top?: string;

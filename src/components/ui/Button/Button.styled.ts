@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Styles } from "../../../App.style";
+import { Styles } from "../../../App.styled";
 
 export const BaseButton = styled.button<Styles>`
   background-color: ${({ theme }) => theme.dark.accent700};

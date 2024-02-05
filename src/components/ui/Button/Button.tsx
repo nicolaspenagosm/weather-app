@@ -1,2 +1,2 @@
-import { StyledButton } from "./Button.style";
+import { StyledButton } from "./Button.styled";
 export default StyledButton; 

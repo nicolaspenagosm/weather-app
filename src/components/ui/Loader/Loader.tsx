@@ -1,4 +1,4 @@
-import { StyledLoaderCloud, StyledLoaderSpinner } from "./Loader.style";
+import { StyledLoaderCloud, StyledLoaderSpinner } from "./Loader.styled";
 
 export type LoaderProps = {
   size: number;

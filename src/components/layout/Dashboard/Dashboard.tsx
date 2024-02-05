@@ -1,5 +1,5 @@
 import Loader from "../../ui/Loader/Loader";
-import { StyledDashboard } from "./Dashboard.style";
+import { StyledDashboard } from "./Dashboard.styled";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
 import TodaysHighlights from "../../weather/TodaysHightlights/TodayHightlight";

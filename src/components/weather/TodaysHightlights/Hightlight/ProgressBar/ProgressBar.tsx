@@ -16,7 +16,7 @@ const ProgressBar: React.FC<{ progress: number }> = ({ progress }) => {
   return (
     <ProgressBarContainer>
       <OuterProgressBar>
-        <InnerProgressBar progress={animProgress} />
+        <InnerProgressBar $progress={animProgress} />
         <div>
           <i>0</i>
           <i>50</i>

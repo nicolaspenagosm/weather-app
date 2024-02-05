@@ -26,8 +26,8 @@ export const OuterProgressBar = styled(StyledProgressBar)`
   background-color: ${({ theme }) => theme.dark.accent500};
 `;
 
-export const InnerProgressBar = styled(StyledProgressBar)<{ progress: number }>`
+export const InnerProgressBar = styled(StyledProgressBar)<{ $progress: number }>`
   transition: all ease-in 500ms;
-  width: ${({ progress }) => (progress * progressBarWidth) / 100 + "rem"};
+  width: ${({ $progress }) => ($progress * progressBarWidth) / 100 + "rem"};
   background-color: ${({ theme }) => theme.dark.contrast500};
 `;

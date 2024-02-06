@@ -1,9 +1,12 @@
 import styled from "styled-components";
+import { Styles } from "../../../App.styled";
 
-export const StyledSideSearchBar = styled.aside<{
+interface SearchBarProps extends Styles{
   $animDuration: number;
   $sideBarWidth: number;
-}>`
+}
+
+export const StyledSideSearchBar = styled.aside<SearchBarProps>`
   position: absolute;
   background-color: ${({ theme }) => theme.dark.primary400};
   height: 100dvh;
@@ -12,7 +15,11 @@ export const StyledSideSearchBar = styled.aside<{
   top: 0;
   left: 0;
   transform: translateX(-${({ $sideBarWidth }) => $sideBarWidth}px);
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+  ${({ $styles }) => $styles};
   @media (min-width: ${({ theme }) => theme.mobileBreakpoint}px) {
     height: 100%;
     width: 100%;

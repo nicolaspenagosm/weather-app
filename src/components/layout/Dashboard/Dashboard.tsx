@@ -18,7 +18,7 @@ const Dashboard: React.FC = () => {
           <TodaysHighlights />
         </>
       ) : (
-        <Loader variant="cloud" size={175} />
+        <Loader variant="cloud" loaderSize={175} />
       )}
     </StyledDashboard>
   );

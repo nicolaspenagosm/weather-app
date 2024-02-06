@@ -1,10 +1,12 @@
+import { City } from "../../store/cities-slice/cities-slice";
 import { get } from "./base";
 
-export type CityName = {
+export type FetchCityNameProps = {
   name: string;
-  limit: number;
+  limit?: number;
 };
 
 export const CityApi = {
-  getCitiesByName: (params: CityName) => get("city", { params }),
+  getCitiesByName: (params: FetchCityNameProps) =>
+    get<City[]>("city", { params: { ...params, limit: 5 } }),
 };

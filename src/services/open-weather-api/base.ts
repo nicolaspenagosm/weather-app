@@ -16,7 +16,7 @@ const { get, post, put, delete: destroy } = openWeatherClient;
 export { get, post, put, destroy };
 
 /*
-function handleErrorResponse(error: any): never {
+function handleErrorAxiosResponse(error: any): never {
   let errorResponse;
   if (error.response && error.response.data) {
     errorResponse = error.response.data;

@@ -1,9 +1,9 @@
 import { useCallback, useState } from "react";
-import { CityName } from "../services/city-api";
+import { FetchCityNameProps } from "../services/city-api";
 import { Position } from "../services/geolocation-api";
 
 export interface ApiParams {
-  params?: Position | CityName;
+  params?: Position | FetchCityNameProps;
 }
 
 export type State = {

@@ -1,15 +1,32 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { StyledSideSearchBar } from "./SideSearchBar.styled";
 import { CSSTransition } from "react-transition-group";
 import { Button } from "./SideSearchBar.styled";
+import Input from "../Input/Input";
+import useDebounceHttpInput from "../../../hooks/use-debounce-http-input";
+import { fetchCities } from "../../../store/cities-slice/cities-actions";
+import { isValidCity } from "../../../utils/input";
 
 const ANIM_DURATION = 500;
 
 const SideSearchBar: React.FC<{
   closeSideBar: () => void;
   showSideBar: boolean;
-}> = ({ closeSideBar,  showSideBar }) => {
+}> = ({ closeSideBar, showSideBar }) => {
   const sideBarRef = useRef<HTMLScriptElement>(null);
+  const [opacity, setOpacity] = useState(0);
+
+  const {
+    valueChangeHandler,
+    inputBlurHandler,
+    isFetching,
+    hasError,
+  } = useDebounceHttpInput(fetchCities, isValidCity);
+
+  // Avoid rendering bug
+  useEffect(() => {
+    setOpacity(1);
+  }, []);
 
   useEffect(() => {
     // This is safe since we are not manipulating the DOM
@@ -23,10 +40,6 @@ const SideSearchBar: React.FC<{
     }
   }, [showSideBar]);
 
-  const sideBarWidth = sideBarRef.current
-    ? sideBarRef.current.offsetWidth + 1
-    : 0;
-  console.log(sideBarWidth);
   return (
     <CSSTransition
       in={showSideBar}
@@ -37,7 +50,8 @@ const SideSearchBar: React.FC<{
         className="side-bar"
         $animDuration={ANIM_DURATION}
         ref={sideBarRef}
-        $sideBarWidth={sideBarWidth}
+        $sideBarWidth={1000}
+        $styles={{ opacity: opacity }}
       >
         <Button
           onClick={() => {
@@ -46,6 +60,13 @@ const SideSearchBar: React.FC<{
         >
           x
         </Button>
+        <Input
+          $styles={{ width: "80%", marginTop: "4rem" }}
+          onChange={valueChangeHandler}
+          onBlur={inputBlurHandler}
+          hasError={hasError}
+          isFetching = {isFetching}
+        />
       </StyledSideSearchBar>
     </CSSTransition>
   );

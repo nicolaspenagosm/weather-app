@@ -1,8 +1,12 @@
 import styled from "styled-components";
 
-export const StyledLoaderSpinner = styled.span<{ size: number }>`
-  width: ${({ size }) => size}px;
-  height: ${({ size }) => size}px;
+export interface LoaderSize {
+  $loaderSize: number;
+};
+
+export const StyledLoaderSpinner = styled.span<LoaderSize>`
+  width: ${({ $loaderSize: size }) => size}px;
+  height: ${({ $loaderSize: size }) => size}px;
   border: 3px solid ${({ theme }) => theme.dark.accent500};
   border-radius: 50%;
   display: inline-block;
@@ -16,8 +20,8 @@ export const StyledLoaderSpinner = styled.span<{ size: number }>`
     left: 0;
     top: 0;
     background: ${({ theme }) => theme.dark.contrast500};
-    width: ${({ size }) => size / 3}px;
-    height: ${({ size }) => size / 3}px;
+    width: ${({ $loaderSize: size }) => size / 3}px;
+    height: ${({ $loaderSize: size }) => size / 3}px;
     transform: translate(-50%, 50%);
     border-radius: 50%;
   }
@@ -31,9 +35,9 @@ export const StyledLoaderSpinner = styled.span<{ size: number }>`
   }
 `;
 
-export const StyledLoaderCloud = styled.span<{ size: number }>`
-  width: ${({ size }) => size}px;
-  height: ${({ size }) => size / 2.18}px;
+export const StyledLoaderCloud = styled.span<LoaderSize>`
+  width: ${({ $loaderSize: size }) => size}px;
+  height: ${({ $loaderSize: size }) => size / 2.18}px;
   display: block;
   margin: auto;
   background-image: radial-gradient(
@@ -189,6 +193,26 @@ export const StyledLoaderCloud = styled.span<{ size: number }>`
     }
     100% {
       transform: rotate(-360deg);
+    }
+  }
+`;
+
+export const StyledPlainSpinner = styled.span<LoaderSize>`
+  width: ${({ $loaderSize: size }) => size}px;
+  height: ${({ $loaderSize: size }) => size}px;
+  border: ${({ $loaderSize: size }) => size*(5/48)}px solid #fff;
+  border-bottom-color: #ff3d00;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
     }
   }
 `;

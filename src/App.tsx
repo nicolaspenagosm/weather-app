@@ -33,7 +33,6 @@ function App() {
   useEffect(() => {
     const onInit = async () => {
       const currentLocation = await getLocation();
-
       if (currentLocation) {
         sendRequest(() => dispatch(fetchWeatherAction(currentLocation)));
         dispatch(fetch5DaysForecast(currentLocation));

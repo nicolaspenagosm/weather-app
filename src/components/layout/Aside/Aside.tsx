@@ -126,7 +126,7 @@ const Aside: React.FC = () => {
           />
         </>
       ) : (
-        <Loader size={80} variant="spinner" />
+        <Loader loaderSize={80} variant="spinner" />
       )}
     </StyledAside>
   );

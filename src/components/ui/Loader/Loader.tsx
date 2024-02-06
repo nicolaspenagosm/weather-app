@@ -1,15 +1,18 @@
-import { StyledLoaderCloud, StyledLoaderSpinner } from "./Loader.styled";
+import { StyledLoaderCloud, StyledLoaderSpinner, StyledPlainSpinner } from "./Loader.styled";
 
 export type LoaderProps = {
-  size: number;
-  variant?: "spinner" | "cloud";
+  loaderSize: number;
+  variant?: "spinner" | "cloud" | "plain";
 };
 
-const Loader: React.FC<LoaderProps> = ({ size, variant }) => {
+const Loader: React.FC<LoaderProps> = ({ loaderSize: size, variant }) => {
   if (variant === "cloud")
-    return <StyledLoaderCloud size={size}></StyledLoaderCloud>;
+    return <StyledLoaderCloud $loaderSize={size}></StyledLoaderCloud>;
 
-  return <StyledLoaderSpinner size={size}></StyledLoaderSpinner>;
+    if(variant === "plain")
+    return <StyledPlainSpinner $loaderSize={size}></StyledPlainSpinner>
+
+  return <StyledLoaderSpinner $loaderSize={size}></StyledLoaderSpinner>;
 };
 
 export default Loader;

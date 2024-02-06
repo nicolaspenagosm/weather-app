@@ -80,4 +80,8 @@ export const GlobalStyle = createGlobalStyle`
   .no-scroll{
     overflow-y: hidden;
   }
+
+  *:focus {
+    outline: none;
+}
 `;

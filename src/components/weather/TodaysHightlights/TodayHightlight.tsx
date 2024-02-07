@@ -11,9 +11,11 @@ const TodaysHighlights: React.FC = () => {
   const currentWeather = useSelector(
     (state: RootState) => state.weather.currentWeather
   );
+
   return (
     <StyledTodaysHighlights>
       <h2>Today’s Hightlights </h2>
+      
       <HighlightsGrid>
         <Highlight
           title="Wind status"

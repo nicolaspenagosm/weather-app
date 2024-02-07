@@ -19,7 +19,7 @@ import { parseDate } from "../../../utils/date";
 import { Img } from "./Aside.styled";
 import { useEffect, useState } from "react";
 import { getIconUrl } from "../../../utils/image";
-import SideSearchBar from "../../ui/SideSearchBar/SideSearchBar";
+import SideSearchBar from "../../weather/SideSearchBar/SideSearchBar";
 
 const searchBtnStyles: Interpolation<React.CSSProperties> = {
   position: "absolute",
@@ -38,6 +38,7 @@ const asidePassingStyles: Interpolation<React.CSSProperties> = {
 };
 
 const Aside: React.FC = () => {
+ 
   const currentWeather = useSelector(
     (state: RootState) => state.weather.currentWeather
   );

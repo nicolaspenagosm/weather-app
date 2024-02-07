@@ -40,6 +40,7 @@ const weatherSlice = createSlice({
   initialState,
   reducers: {
     setCurrentWeather(state, { payload }: PayloadAction<CurrentWeather>) {
+    
       state.currentWeather = payload;
     },
     setCurrentPosition(state, { payload }: PayloadAction<Position>) {

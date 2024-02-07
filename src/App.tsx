@@ -10,7 +10,6 @@ import {
   fetch5DaysForecast,
   fetchWeatherAction,
 } from "./store/weather-slice/weather-actions";
-import SideSearchBar from "./components/ui/SideSearchBar/SideSearchBar";
 
 const Root = styled.div`
   display: flex;

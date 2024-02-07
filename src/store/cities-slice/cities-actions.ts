@@ -1,15 +1,23 @@
 import { Dispatch } from "@reduxjs/toolkit";
-import { City } from "./cities-slice";
+import { City, citiesActions } from "./cities-slice";
 import { CityApi } from "../../services/city-api";
 import { FetchCityNameProps } from "../../services/city-api";
 import { handleErrorResponse } from "..";
+
 export const fetchCities = (params: FetchCityNameProps) => {
   return async (dispatch: Dispatch) => {
-    try{
-      const cities = await CityApi.getCitiesByName(params);
-      console.log(cities);
-    }catch(err){
+    try {
+      dispatch(citiesActions.setCities([]));
+      const cities = (await CityApi.getCitiesByName(params)).data;
+      dispatch(citiesActions.setCities(cities));
+    } catch (err) {
       handleErrorResponse(err);
     }
+  };
+};
+
+export const clearCities = () => {
+  return (dispatch: Dispatch) => {
+    dispatch(citiesActions.setCities([]));
   };
 };

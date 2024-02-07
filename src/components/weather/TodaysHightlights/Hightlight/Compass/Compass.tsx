@@ -12,7 +12,7 @@ const Compass: React.FC<{ deg: number }> = ({ deg }) => {
         transform: `rotate(${deg}deg);`,
       });
     }, 250);
-  }, []);
+  }, [deg]);
 
   return (
     <StyledCompass>

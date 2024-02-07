@@ -2,15 +2,14 @@ import { Dispatch, UnknownAction } from "@reduxjs/toolkit";
 import { useEffect, useState } from "react";
 import { useAppDispatch } from "../store";
 
-const DELAY = 1000;
-
 type DispatchFn = (
   params: any
 ) => (dispatch: Dispatch<UnknownAction>) => Promise<void>;
 
 const useDebounceHttpInput = (
   fnToDispatch: DispatchFn,
-  validateValue: (val: string) => boolean
+  validateValue: (val: string) => boolean,
+  delay:number
 ) => {
   const [value, setValue] = useState<string>("");
   const [debouncedValue, setDebouncedValue] = useState<string>("");
@@ -24,7 +23,7 @@ const useDebounceHttpInput = (
   useEffect(() => {
     const timer = setTimeout(() => {
       setDebouncedValue(value);
-    }, DELAY);
+    }, delay);
 
     return () => clearTimeout(timer);
   }, [value]);
@@ -57,11 +56,19 @@ const useDebounceHttpInput = (
     setIsTouched(true);
   };
 
+  const reset = () => {
+    setIsTouched(false);
+    setValue("");
+    setDebouncedValue("");
+  };
+
   return {
     valueChangeHandler,
     inputBlurHandler,
     isFetching,
     hasError,
+    reset,
+    value
   };
 };
 

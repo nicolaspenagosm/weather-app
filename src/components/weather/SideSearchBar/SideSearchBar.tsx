@@ -2,11 +2,15 @@ import { useEffect, useRef, useState } from "react";
 import { StyledSideSearchBar } from "./SideSearchBar.styled";
 import { CSSTransition } from "react-transition-group";
 import { Button } from "./SideSearchBar.styled";
-import Input from "../Input/Input";
+import Input from "../../ui/Input/Input";
 import useDebounceHttpInput from "../../../hooks/use-debounce-http-input";
 import { fetchCities } from "../../../store/cities-slice/cities-actions";
 import { isValidCity } from "../../../utils/input";
-
+import CitiesList from "../../cities/CitiesList/CitiesList";
+import { useSelector } from "react-redux";
+import { RootState, useAppDispatch } from "../../../store";
+import { citiesActions } from "../../../store/cities-slice/cities-slice";
+import { clearCities } from "../../../store/cities-slice/cities-actions";
 const ANIM_DURATION = 500;
 
 const SideSearchBar: React.FC<{
@@ -15,13 +19,16 @@ const SideSearchBar: React.FC<{
 }> = ({ closeSideBar, showSideBar }) => {
   const sideBarRef = useRef<HTMLScriptElement>(null);
   const [opacity, setOpacity] = useState(0);
-
+  const cities = useSelector((state: RootState) => state.cities.cities);
+  const dispatch = useAppDispatch();
   const {
     valueChangeHandler,
     inputBlurHandler,
     isFetching,
     hasError,
-  } = useDebounceHttpInput(fetchCities, isValidCity);
+    reset,
+    value,
+  } = useDebounceHttpInput(fetchCities, isValidCity, 500);
 
   // Avoid rendering bug
   useEffect(() => {
@@ -55,6 +62,8 @@ const SideSearchBar: React.FC<{
       >
         <Button
           onClick={() => {
+            reset();
+            dispatch(clearCities());
             closeSideBar();
           }}
         >
@@ -65,8 +74,10 @@ const SideSearchBar: React.FC<{
           onChange={valueChangeHandler}
           onBlur={inputBlurHandler}
           hasError={hasError}
-          isFetching = {isFetching}
+          isFetching={isFetching}
+          value={value}
         />
+        <CitiesList cities={cities} />
       </StyledSideSearchBar>
     </CSSTransition>
   );

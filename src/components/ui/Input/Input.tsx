@@ -9,6 +9,7 @@ interface InputProps extends Styles {
   onBlur: (event: React.FocusEvent<HTMLInputElement, Element>) => void;
   hasError: boolean;
   isFetching: boolean;
+  value:string
 }
 
 const LOADER_SIZE = 19;
@@ -18,6 +19,7 @@ const Input: React.FC<InputProps> = ({
   onBlur,
   hasError,
   isFetching,
+  value
 }) => {
   return (
     <InputContainer $styles={$styles} $hasError={hasError}>
@@ -35,6 +37,7 @@ const Input: React.FC<InputProps> = ({
         onChange={onChange}
         onBlur={onBlur}
         $loaderSize={LOADER_SIZE}
+        value={value}
         
       />
       {isFetching&&<Loader loaderSize={LOADER_SIZE} variant="plain"/>}

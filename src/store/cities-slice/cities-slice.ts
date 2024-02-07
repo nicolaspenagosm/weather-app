@@ -20,10 +20,10 @@ const citiesSlice = createSlice({
   initialState,
   reducers: {
     setCities(state, { payload }: PayloadAction<City[]>) {
-      state.cities.push(...payload);
+      state.cities = payload;
     },
   },
 });
 
-export const citiesActions = citiesSlice.reducer;
-export default citiesSlice;
+export const citiesActions = citiesSlice.actions;
+export default citiesSlice.reducer;

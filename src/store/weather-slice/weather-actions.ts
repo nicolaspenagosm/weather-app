@@ -12,6 +12,7 @@ import { calculateDateIndx, gateTodayLimitIndex, getMilisUntilEndOfTheDay } from
 
 export const fetchWeatherAction = (params: Position) => {
   return async (dispatch: Dispatch) => {
+
     const data = (await OpenWeatherAPI.getCurrentWeather(params)).data;
 
     const mappedWeatherData: CurrentWeather = {

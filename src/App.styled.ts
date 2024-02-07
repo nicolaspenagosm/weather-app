@@ -7,6 +7,7 @@ export interface Styles {
 
 export const theme = {
   mobileBreakpoint: 845,
+  tabletBreakpoint: 1150,
   dark: {
     primary400: "#1E213A",
     primary500: "#100E1D",
@@ -15,6 +16,7 @@ export const theme = {
     accent700: "#6E707A",
     accent800: "#61636D",
     contrast500: "#EB6E4B",
+    contrast900:"#642A19"
   },
   light: {
     primary500: "",
@@ -50,7 +52,7 @@ export const GlobalStyle = createGlobalStyle`
     font: inherit;
     vertical-align: baseline;
     font-family: 'Raleway', sans-serif;
-    font-size: 15px;
+    font-size: 14px;
     color: ${({ theme }) => theme.dark.accent500};
   }
   /* HTML5 display-role reset for older browsers */

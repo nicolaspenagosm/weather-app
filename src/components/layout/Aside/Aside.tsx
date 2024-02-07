@@ -112,7 +112,7 @@ const Aside: React.FC = () => {
           >
             Search for places
           </Button>
-          <IconButton variant="location" $styles={locationBtnStyles} />
+          <IconButton variant="location" $styles={locationBtnStyles}/>
           <Footer>
             <p>Today &#8226; {parseDate(now)}</p>
             <div>

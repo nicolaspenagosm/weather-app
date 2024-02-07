@@ -11,6 +11,7 @@ import { useSelector } from "react-redux";
 import { RootState, useAppDispatch } from "../../../store";
 import { citiesActions } from "../../../store/cities-slice/cities-slice";
 import { clearCities } from "../../../store/cities-slice/cities-actions";
+import { P } from "../../layout/Aside/Aside.styled";
 const ANIM_DURATION = 500;
 
 const SideSearchBar: React.FC<{
@@ -20,6 +21,7 @@ const SideSearchBar: React.FC<{
   const sideBarRef = useRef<HTMLScriptElement>(null);
   const [opacity, setOpacity] = useState(0);
   const cities = useSelector((state: RootState) => state.cities.cities);
+
   const dispatch = useAppDispatch();
   const {
     valueChangeHandler,
@@ -29,6 +31,8 @@ const SideSearchBar: React.FC<{
     reset,
     value,
   } = useDebounceHttpInput(fetchCities, isValidCity, 500);
+
+  //
 
   // Avoid rendering bug
   useEffect(() => {
@@ -47,6 +51,12 @@ const SideSearchBar: React.FC<{
     }
   }, [showSideBar]);
 
+  const closeAndClearSideBar = () => {
+    reset();
+    dispatch(clearCities());
+    closeSideBar();
+  };
+
   return (
     <CSSTransition
       in={showSideBar}
@@ -62,9 +72,7 @@ const SideSearchBar: React.FC<{
       >
         <Button
           onClick={() => {
-            reset();
-            dispatch(clearCities());
-            closeSideBar();
+            closeAndClearSideBar();
           }}
         >
           x
@@ -77,7 +85,7 @@ const SideSearchBar: React.FC<{
           isFetching={isFetching}
           value={value}
         />
-        <CitiesList cities={cities} />
+        <CitiesList cities={cities} closeAndClearSideBar={closeAndClearSideBar} />
       </StyledSideSearchBar>
     </CSSTransition>
   );

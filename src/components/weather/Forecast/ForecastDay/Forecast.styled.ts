@@ -4,6 +4,13 @@ export const StyledForecastDay = styled.article`
   p {
     text-align: center;
   }
+
+  @media (min-width: ${({ theme }) => theme.mobileBreakpoint}px) {
+    img {
+      width: 80px;
+      height: 80px;
+    }
+  }
 `;
 
 export const DIV = styled.div`

@@ -1,3 +1,4 @@
+import "animate.css";
 import {
   HighlightsGrid,
   StyledTodaysHighlights,
@@ -7,15 +8,27 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
 import { round } from "../../../utils/number";
 import { fromMetersToMiles } from "../../../utils/distance";
+import { useEffect, useState } from "react";
+const ANIM_DELAY = 50;
 const TodaysHighlights: React.FC = () => {
   const currentWeather = useSelector(
     (state: RootState) => state.weather.currentWeather
   );
 
-  return (
-    <StyledTodaysHighlights>
-      <h2>Today’s Hightlights </h2>
+  const [animClasses, setAnimClasses] = useState("");
+
+  useEffect(() => {
+    setAnimClasses("");
+    setTimeout(() => {
       
+      setAnimClasses("animate__animated  animate__headShake");
+    }, ANIM_DELAY);
+  }, [currentWeather]);
+
+  return (
+    <StyledTodaysHighlights className={animClasses}>
+      <h2>Today’s Hightlights </h2>
+
       <HighlightsGrid>
         <Highlight
           title="Wind status"

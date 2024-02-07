@@ -9,7 +9,7 @@ const Forecast: React.FC = () => {
   );
 
   return (
-    <StyledForecast>
+    <StyledForecast >
       {fiveDaysForecast &&
         fiveDaysForecast.map((forecast) => (
           <ForecastDay

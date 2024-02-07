@@ -27,20 +27,24 @@ export interface WeatherState {
   currentPosition: Position | null;
   currentWeather: CurrentWeather | null;
   forecast: WeatherForecast[] | null;
+  isFetching: boolean;
 }
 
 const initialState: WeatherState = {
   currentPosition: null,
   currentWeather: null,
   forecast: null,
+  isFetching: false,
 };
 
 const weatherSlice = createSlice({
   name: "weather",
   initialState,
   reducers: {
+    setIsFetching(state, {payload}:PayloadAction<boolean>){
+      state.isFetching = payload;
+    },
     setCurrentWeather(state, { payload }: PayloadAction<CurrentWeather>) {
-    
       state.currentWeather = payload;
     },
     setCurrentPosition(state, { payload }: PayloadAction<Position>) {

@@ -8,11 +8,15 @@ import {
   weatherActions,
 } from "./weather-slice";
 import { getMostRepeatedEl, setOrAddCount } from "../../utils/map";
-import { calculateDateIndx, gateTodayLimitIndex, getMilisUntilEndOfTheDay } from "../../utils/date";
+import {
+  calculateDateIndx,
+  gateTodayLimitIndex,
+  getMilisUntilEndOfTheDay,
+} from "../../utils/date";
 
 export const fetchWeatherAction = (params: Position) => {
   return async (dispatch: Dispatch) => {
-
+    dispatch(weatherActions.setIsFetching(true));
     const data = (await OpenWeatherAPI.getCurrentWeather(params)).data;
 
     const mappedWeatherData: CurrentWeather = {
@@ -30,11 +34,13 @@ export const fetchWeatherAction = (params: Position) => {
     };
 
     dispatch(weatherActions.setCurrentWeather(mappedWeatherData));
+    dispatch(weatherActions.setIsFetching(false));
   };
 };
 
 export const fetch5DaysForecast = (params: Position) => {
   return async (dispatch: Dispatch) => {
+    dispatch(weatherActions.setIsFetching(true));
     const dataList = (await OpenWeatherAPI.getfiveDayForecast(params)).data
       .list;
 
@@ -63,6 +69,7 @@ export const fetch5DaysForecast = (params: Position) => {
     );
 
     dispatch(weatherActions.setForecast(fiveDaysForecast));
+    dispatch(weatherActions.setIsFetching(false));
   };
 };
 

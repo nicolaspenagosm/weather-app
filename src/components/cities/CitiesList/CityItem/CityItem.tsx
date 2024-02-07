@@ -9,12 +9,19 @@ import {
 } from "../../../../store/weather-slice/weather-actions";
 
 //{ city: City } { city }
-const CityItem: React.FC<{ city: City }> = ({ city }) => {
+const CityItem: React.FC<{ city: City; closeAndClearSideBar: () => void }> = ({
+  city,
+  closeAndClearSideBar,
+}) => {
   const dispatch = useAppDispatch();
 
-  const onCitySelected = () => {
-    dispatch(fetchWeatherAction({ lat: city.latitude, lon: city.longitude }));
-    dispatch(fetch5DaysForecast({ lat: city.latitude, lon: city.longitude }));
+  const onCitySelected = async () => {
+    await Promise.all([
+      dispatch(fetchWeatherAction({ lat: city.latitude, lon: city.longitude })),
+      dispatch(fetch5DaysForecast({ lat: city.latitude, lon: city.longitude })),
+    ]);
+
+    closeAndClearSideBar();
   };
   return (
     <StyledCityItem

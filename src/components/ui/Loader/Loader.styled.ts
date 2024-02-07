@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export interface LoaderSize {
   $loaderSize: number;
-};
+}
 
 export const StyledLoaderSpinner = styled.span<LoaderSize>`
   width: ${({ $loaderSize: size }) => size}px;
@@ -200,7 +200,7 @@ export const StyledLoaderCloud = styled.span<LoaderSize>`
 export const StyledPlainSpinner = styled.span<LoaderSize>`
   width: ${({ $loaderSize: size }) => size}px;
   height: ${({ $loaderSize: size }) => size}px;
-  border: ${({ $loaderSize: size }) => size*(5/48)}px solid #fff;
+  border: ${({ $loaderSize: size }) => size * (5 / 48)}px solid #fff;
   border-bottom-color: #ff3d00;
   border-radius: 50%;
   display: inline-block;
@@ -213,6 +213,29 @@ export const StyledPlainSpinner = styled.span<LoaderSize>`
     }
     100% {
       transform: rotate(360deg);
+    }
+  }
+`;
+
+export const StyledProgressLoader = styled.div`
+  position: absolute;
+  top: 0;
+  height: 4px;
+  width: 100%;
+  --c: no-repeat linear-gradient(${({ theme }) => theme.dark.contrast500} 0 0);
+  background: var(--c), var(--c), ${({ theme }) => theme.dark.contrast900};
+  background-size: 60% 100%;
+  animation: l16 3s infinite;
+
+  @keyframes l16 {
+    0% {
+      background-position: -150% 0, -150% 0;
+    }
+    66% {
+      background-position: 250% 0, -150% 0;
+    }
+    100% {
+      background-position: 250% 0, 250% 0;
     }
   }
 `;

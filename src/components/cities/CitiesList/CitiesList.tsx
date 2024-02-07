@@ -3,11 +3,18 @@ import { StyledCitiesList } from "./CitiesList.styled";
 import CityItem from "./CityItem/CityItem";
 import { v4 as uuidv4 } from "uuid";
 
-const CitiesList: React.FC<{ cities: City[] }> = ({ cities }) => {
+const CitiesList: React.FC<{
+  cities: City[];
+  closeAndClearSideBar: () => void;
+}> = ({ cities, closeAndClearSideBar }) => {
   return (
     <StyledCitiesList>
       {cities.map((city) => (
-        <CityItem key={uuidv4()} city={city} />
+        <CityItem
+          key={uuidv4()}
+          city={city}
+          closeAndClearSideBar={closeAndClearSideBar}
+        />
       ))}
     </StyledCitiesList>
   );

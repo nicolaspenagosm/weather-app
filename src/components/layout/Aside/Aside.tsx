@@ -12,14 +12,21 @@ import Button from "../../ui/Button/Button";
 import IconButton from "../../ui/Button/IconButton";
 import Loader from "../../ui/Loader/Loader";
 import { useSelector } from "react-redux";
-import { RootState } from "../../../store/index";
-import { fromKelvinToCelsius } from "../../../utils/temp";
+import { RootState, useAppDispatch } from "../../../store/index";
+import { convertTemp, fromKelvinToCelsius } from "../../../utils/temp";
 import { Footer } from "./Aside.styled";
 import { parseDate } from "../../../utils/date";
 import { Img } from "./Aside.styled";
 import { useEffect, useState } from "react";
 import { getIconUrl } from "../../../utils/image";
 import SideSearchBar from "../../weather/SideSearchBar/SideSearchBar";
+import { getLocation } from "../../../services/geolocation-api";
+
+import {
+  fetch5DaysForecast,
+  fetchWeatherAction,
+} from "../../../store/weather-slice/weather-actions";
+import useHttp from "../../../hooks/use-http";
 
 const searchBtnStyles: Interpolation<React.CSSProperties> = {
   position: "absolute",
@@ -38,10 +45,28 @@ const asidePassingStyles: Interpolation<React.CSSProperties> = {
 };
 
 const Aside: React.FC = () => {
- 
+  const dispatch = useAppDispatch();
+  const { isLoading, error, sendRequest } = useHttp({
+    loading: true,
+    error: null,
+  });
+
+  useEffect(() => {
+    const onInit = async () => {
+      const currentLocation = await getLocation();
+      if (currentLocation) {
+        sendRequest(() => dispatch(fetchWeatherAction(currentLocation)));
+        dispatch(fetch5DaysForecast(currentLocation));
+      }
+    };
+
+    onInit();
+  }, []);
+
   const currentWeather = useSelector(
     (state: RootState) => state.weather.currentWeather
   );
+  const tempUnit = useSelector((state: RootState) => state.weather.tempUnit);
   const [imgOpacity, setImageOpacity] = useState("0");
   const [showSideBar, setShowSideBar] = useState(false);
 
@@ -53,6 +78,13 @@ const Aside: React.FC = () => {
     setShowSideBar(true);
   };
 
+  const loadCurrentLocation = async () => {
+    const currentLocation = await getLocation();
+    if (currentLocation) {
+      sendRequest(() => dispatch(fetchWeatherAction(currentLocation)));
+      dispatch(fetch5DaysForecast(currentLocation));
+    }
+  };
   const asideStyles = currentWeather ? "" : asidePassingStyles;
   const now = new Date();
 
@@ -100,8 +132,8 @@ const Aside: React.FC = () => {
 
           <Measure
             $variant={"large"}
-            value={`${fromKelvinToCelsius(+currentWeather!.temp)}`}
-            unit="°C"
+            value={`${convertTemp(+currentWeather!.temp, tempUnit)}`}
+            unit={tempUnit}
           />
           <P>{currentWeather.main}</P>
           <Button
@@ -112,7 +144,13 @@ const Aside: React.FC = () => {
           >
             Search for places
           </Button>
-          <IconButton variant="location" $styles={locationBtnStyles}/>
+          <IconButton
+            variant="location"
+            $styles={locationBtnStyles}
+            onClick={() => {
+              loadCurrentLocation();
+            }}
+          />
           <Footer>
             <p>Today &#8226; {parseDate(now)}</p>
             <div>

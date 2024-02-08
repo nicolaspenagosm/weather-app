@@ -12,7 +12,8 @@ const ProgressBar: React.FC<{ progress: number }> = ({ progress }) => {
     setTimeout(() => {
       setAnimProgress(progress);
     }, 250);
-  }, []);
+  }, [progress]);
+  
   return (
     <ProgressBarContainer>
       <OuterProgressBar>

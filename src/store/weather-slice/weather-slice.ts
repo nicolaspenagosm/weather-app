@@ -28,9 +28,11 @@ export interface WeatherState {
   currentWeather: CurrentWeather | null;
   forecast: WeatherForecast[] | null;
   isFetching: boolean;
+  tempUnit: "°F" | "°C";
 }
 
 const initialState: WeatherState = {
+  tempUnit: "°C",
   currentPosition: null,
   currentWeather: null,
   forecast: null,
@@ -41,7 +43,13 @@ const weatherSlice = createSlice({
   name: "weather",
   initialState,
   reducers: {
-    setIsFetching(state, {payload}:PayloadAction<boolean>){
+    setTempUnit(state, { payload }: PayloadAction<WeatherState["tempUnit"]>) {
+      state.tempUnit = payload;
+    },
+    setIsFetching(
+      state,
+      { payload }: PayloadAction<WeatherState["isFetching"]>
+    ) {
       state.isFetching = payload;
     },
     setCurrentWeather(state, { payload }: PayloadAction<CurrentWeather>) {

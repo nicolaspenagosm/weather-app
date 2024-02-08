@@ -11,7 +11,6 @@ import { getMostRepeatedEl, setOrAddCount } from "../../utils/map";
 import {
   calculateDateIndx,
   gateTodayLimitIndex,
-  getMilisUntilEndOfTheDay,
 } from "../../utils/date";
 
 export const fetchWeatherAction = (params: Position) => {

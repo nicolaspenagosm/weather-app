@@ -5,6 +5,7 @@ import { RootState } from "../../../store";
 import TodaysHighlights from "../../weather/TodaysHightlights/TodayHightlight";
 import Forecast from "../../weather/Forecast/Forecast";
 import Logo from "../../ui/Logo/Logo";
+import { ToggleUnit } from "../../weather/ToggleUnit/ToggleUnit";
 
 const Dashboard: React.FC = () => {
   const currentWeather = useSelector(
@@ -20,6 +21,7 @@ const Dashboard: React.FC = () => {
       {currentWeather ? (
         <>
           {isFetchingWeather && <Loader variant="progress" />}
+          <ToggleUnit/>
           <Forecast />
           <TodaysHighlights />
           <Logo />

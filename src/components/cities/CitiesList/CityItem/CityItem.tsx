@@ -8,7 +8,6 @@ import {
   fetch5DaysForecast,
 } from "../../../../store/weather-slice/weather-actions";
 
-//{ city: City } { city }
 const CityItem: React.FC<{ city: City; closeAndClearSideBar: () => void }> = ({
   city,
   closeAndClearSideBar,

@@ -3,13 +3,15 @@ import {
   HighlightsGrid,
   StyledTodaysHighlights,
 } from "./TodaysHightlight.style";
-import Highlight from "./Hightlight/Highlight";
+import Highlight from "./Hightlight";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
 import { round } from "../../../utils/number";
 import { fromMetersToMiles } from "../../../utils/distance";
 import { useEffect, useState } from "react";
+
 const ANIM_DELAY = 50;
+
 const TodaysHighlights: React.FC = () => {
   const currentWeather = useSelector(
     (state: RootState) => state.weather.currentWeather
@@ -28,7 +30,6 @@ const TodaysHighlights: React.FC = () => {
   return (
     <StyledTodaysHighlights className={animClasses}>
       <h2>Today’s Hightlights </h2>
-
       <HighlightsGrid>
         <Highlight
           title="Wind status"
@@ -50,7 +51,6 @@ const TodaysHighlights: React.FC = () => {
           detail={+currentWeather!.humidity}
           variant="humidity"
         />
-
         <Highlight
           title="Visibility"
           measure={{

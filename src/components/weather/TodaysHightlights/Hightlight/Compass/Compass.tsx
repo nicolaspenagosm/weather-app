@@ -4,6 +4,7 @@ import arrowVector from "../../../../../assets/arrow.svg";
 import { I } from "../Hightlight.styled";
 
 const Compass: React.FC<{ deg: number }> = ({ deg }) => {
+  
   const [animStyles, setAnimStyles] = useState({ transform: "rotate(0deg);" });
 
   useEffect(() => {

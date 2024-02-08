@@ -1,34 +1,35 @@
 import { WeatherForecast } from "../store/weather-slice/weather-slice";
 
-export const dayInMilis = 1000 * 60 * 60 * 24;
+const dayInMilis = 1000 * 60 * 60 * 24;
+const daysOfTheWeek = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+const monthsOfTheYear = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
 
 export const parseDate = (date: Date) => {
-  const days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-  const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-  return `${days[date.getDay()].substring(0, 3)}, ${date.getDate()} ${months[
-    date.getMonth()
-  ].substring(0, 3)}`;
+  return `${daysOfTheWeek[date.getDay()].substring(
+    0,
+    3
+  )}, ${date.getDate()} ${monthsOfTheYear[date.getMonth()].substring(0, 3)}`;
 };
 
 export const isTomorrow = (date: Date) => {
@@ -46,6 +47,7 @@ export const gateTodayLimitIndex = (forecast: WeatherForecast[]) => {
   const endOfTheDay = now.getTime() + milisUntilEndOfTheDay;
   return forecast.findIndex((el) => el.date >= endOfTheDay);
 };
+
 export const calculateDateIndx = (
   index: number,
   measPerDayIdx: number,

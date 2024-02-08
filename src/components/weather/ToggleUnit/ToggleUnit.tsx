@@ -1,16 +1,16 @@
-import { useSelector } from "react-redux";
-import IconButton from "../../ui/Button/IconButton";
+import IconButton from "../../ui/IconButton";
 import { StyledToggleUnit } from "./ToggleUnit.styled";
 import { RootState, useAppDispatch } from "../../../store";
 import {
   WeatherState,
   weatherActions,
 } from "../../../store/weather-slice/weather-slice";
+import { useSelector } from "react-redux";
 
-export const ToggleUnit: React.FC = () => {
+const ToggleUnit: React.FC = () => {
   const tempUnit = useSelector((state: RootState) => state.weather.tempUnit);
+  
   const dispatch = useAppDispatch();
-
   const setTempUnit = (tempUnit: WeatherState["tempUnit"]) => {
     dispatch(weatherActions.setTempUnit(tempUnit));
   };
@@ -38,3 +38,5 @@ export const ToggleUnit: React.FC = () => {
     </StyledToggleUnit>
   );
 };
+
+export default ToggleUnit;

@@ -1,7 +1,7 @@
+import ForecastDay from "./ForecastDay";
 import { useSelector } from "react-redux";
-import { RootState, useAppDispatch } from "../../../store";
+import { RootState } from "../../../store";
 import { StyledForecast } from "./Forecast.styled";
-import ForecastDay from "./ForecastDay/ForecastDay";
 import { isTomorrow, parseDate } from "../../../utils/date";
 const Forecast: React.FC = () => {
   const fiveDaysForecast = useSelector(
@@ -9,7 +9,7 @@ const Forecast: React.FC = () => {
   );
 
   return (
-    <StyledForecast >
+    <StyledForecast>
       {fiveDaysForecast &&
         fiveDaysForecast.map((forecast) => (
           <ForecastDay

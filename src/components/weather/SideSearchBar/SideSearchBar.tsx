@@ -2,22 +2,22 @@ import { useEffect, useRef, useState } from "react";
 import { StyledSideSearchBar } from "./SideSearchBar.styled";
 import { CSSTransition } from "react-transition-group";
 import { Button } from "./SideSearchBar.styled";
-import Input from "../../ui/Input/Input";
+import Input from "../../ui/Input";
 import useDebounceHttpInput from "../../../hooks/use-debounce-http-input";
 import { fetchCities } from "../../../store/cities-slice/cities-actions";
 import { isValidCity } from "../../../utils/input";
-import CitiesList from "../../cities/CitiesList/CitiesList";
+import CitiesList from "../../cities/CitiesList";
 import { useSelector } from "react-redux";
 import { RootState, useAppDispatch } from "../../../store";
-import { citiesActions } from "../../../store/cities-slice/cities-slice";
 import { clearCities } from "../../../store/cities-slice/cities-actions";
-import { P } from "../../layout/Aside/Aside.styled";
+
 const ANIM_DURATION = 500;
 
 const SideSearchBar: React.FC<{
   closeSideBar: () => void;
   showSideBar: boolean;
 }> = ({ closeSideBar, showSideBar }) => {
+
   const sideBarRef = useRef<HTMLScriptElement>(null);
   const [opacity, setOpacity] = useState(0);
   const cities = useSelector((state: RootState) => state.cities.cities);
@@ -31,8 +31,6 @@ const SideSearchBar: React.FC<{
     reset,
     value,
   } = useDebounceHttpInput(fetchCities, isValidCity, 500);
-
-  //
 
   // Avoid rendering bug
   useEffect(() => {

@@ -21,7 +21,6 @@ export const StyledCityItem = styled.li<Styles>`
     position: absolute;
     right: 0.5rem;
     top: 13.5px;
- 
   }
   &:hover {
     border: solid 1px;

@@ -8,10 +8,7 @@ import {
   weatherActions,
 } from "./weather-slice";
 import { getMostRepeatedEl, setOrAddCount } from "../../utils/map";
-import {
-  calculateDateIndx,
-  gateTodayLimitIndex,
-} from "../../utils/date";
+import { calculateDateIndx, gateTodayLimitIndex } from "../../utils/date";
 
 export const fetchWeatherAction = (params: Position) => {
   return async (dispatch: Dispatch) => {

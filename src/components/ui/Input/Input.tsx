@@ -1,15 +1,14 @@
+import mangnifier from "../../../assets/magnifier.svg";
 import { StyledInput, InputContainer, P } from "./Input.styled";
 import { Styles } from "../../../App.styled";
-import mangnifier from "../../../assets/magnifier.svg";
-import Loader from "../Loader/Loader";
-
+import Loader from "../Loader";
 
 interface InputProps extends Styles {
   onChange: (value: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur: (event: React.FocusEvent<HTMLInputElement, Element>) => void;
   hasError: boolean;
   isFetching: boolean;
-  value:string
+  value: string;
 }
 
 const LOADER_SIZE = 19;
@@ -19,7 +18,7 @@ const Input: React.FC<InputProps> = ({
   onBlur,
   hasError,
   isFetching,
-  value
+  value,
 }) => {
   return (
     <InputContainer $styles={$styles} $hasError={hasError}>
@@ -38,9 +37,8 @@ const Input: React.FC<InputProps> = ({
         onBlur={onBlur}
         $loaderSize={LOADER_SIZE}
         value={value}
-        
       />
-      {isFetching&&<Loader loaderSize={LOADER_SIZE} variant="plain"/>}
+      {isFetching && <Loader loaderSize={LOADER_SIZE} variant="plain" />}
       {hasError && <P>Please provide a valid input</P>}
     </InputContainer>
   );

@@ -1,10 +1,10 @@
-import { useSelector } from "react-redux";
-import { getIconUrl } from "../../../../utils/image";
-import { convertTemp, fromKelvinToCelsius } from "../../../../utils/temp";
-import Card from "../../../ui/Card/Card";
-import { StyledForecastDay } from "./Forecast.styled";
-import { DIV } from "./Forecast.styled";
 import "animate.css";
+import { DIV } from "./Forecast.styled";
+import Card from "../../../ui/Card";
+import { getIconUrl } from "../../../../utils/image";
+import { convertTemp } from "../../../../utils/temp";
+import { StyledForecastDay } from "./Forecast.styled";
+import { useSelector } from "react-redux";
 import { RootState } from "../../../../store";
 
 export interface ForecastDayProps {

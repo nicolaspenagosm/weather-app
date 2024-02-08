@@ -5,6 +5,11 @@ export const StyledForecastDay = styled.article`
     text-align: center;
   }
 
+  img {
+    width: 100px;
+    height: 100px;
+  }
+
   @media (min-width: ${({ theme }) => theme.mobileBreakpoint}px) {
     img {
       width: 80px;

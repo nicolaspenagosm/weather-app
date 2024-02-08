@@ -1,6 +1,6 @@
+import 'animate.css';
 import { StyledLogo } from "./Logo.styled";
 import logo from "../../../assets/logo.svg";
-import 'animate.css';
 
 const Logo: React.FC = () => {
   return (

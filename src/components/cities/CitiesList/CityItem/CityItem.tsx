@@ -1,7 +1,6 @@
-import { Styles } from "../../../../App.styled";
-import { City } from "../../../../store/cities-slice/cities-slice";
-import { StyledCityItem } from "./CityItem.styled";
 import rightArrow from "../../../../assets/right-arrow.svg";
+import { StyledCityItem } from "./CityItem.styled";
+import { City } from "../../../../store/cities-slice/cities-slice";
 import { useAppDispatch } from "../../../../store";
 import {
   fetchWeatherAction,

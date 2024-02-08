@@ -2,7 +2,7 @@ import { Dispatch } from "@reduxjs/toolkit";
 import { City, citiesActions } from "./cities-slice";
 import { CityApi } from "../../services/city-api";
 import { FetchCityNameProps } from "../../services/city-api";
-import { handleErrorResponse } from "..";
+import { handleErrorResponse } from "../../utils/http";
 
 export const fetchCities = (params: FetchCityNameProps) => {
   return async (dispatch: Dispatch) => {

@@ -1,25 +1,23 @@
-import { StyledAside, P, BackgroundImage } from "./Aside.styled";
 import { Interpolation } from "styled-components";
-
 import cloud1Left from "../../../assets/cloud-1-left.svg";
 import cloud2Left from "../../../assets/cloud-2-left.svg";
 import cloud1Right from "../../../assets/cloud-1-right.svg";
 import cloud2Right from "../../../assets/cloud-2-right.svg";
 import locationPin from "../../../assets/location-pin.svg";
-
-import Measure from "../../ui/Measure/Measure";
-import Button from "../../ui/Button/Button";
-import IconButton from "../../ui/Button/IconButton";
-import Loader from "../../ui/Loader/Loader";
+import { StyledAside, P, BackgroundImage } from "./Aside.styled";
+import Measure from "../../ui/Measure";
+import Button from "../../ui/Button";
+import IconButton from "../../ui/IconButton";
+import Loader from "../../ui/Loader";
+import { Footer } from "./Aside.styled";
 import { useSelector } from "react-redux";
 import { RootState, useAppDispatch } from "../../../store/index";
-import { convertTemp, fromKelvinToCelsius } from "../../../utils/temp";
-import { Footer } from "./Aside.styled";
+import { convertTemp } from "../../../utils/temp";
 import { parseDate } from "../../../utils/date";
 import { Img } from "./Aside.styled";
 import { useEffect, useState } from "react";
 import { getIconUrl } from "../../../utils/image";
-import SideSearchBar from "../../weather/SideSearchBar/SideSearchBar";
+import SideSearchBar from "../../weather/SideSearchBar";
 import { getLocation } from "../../../services/geolocation-api";
 
 import {

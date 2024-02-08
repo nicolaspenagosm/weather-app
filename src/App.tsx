@@ -1,13 +1,7 @@
-import React from "react";
 import styled, { ThemeProvider } from "styled-components";
 import { GlobalStyle, theme } from "./App.styled";
-import Aside from "./components/layout/Aside/Aside";
-import Dashboard from "./components/layout/Dashboard/Dashboard";
-
-
-import useHttp from "./hooks/use-http";
-
-
+import Aside from "./components/layout/Aside";
+import Dashboard from "./components/layout/Dashboard";
 
 const Root = styled.div`
   display: flex;

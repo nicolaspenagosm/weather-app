@@ -31,4 +31,3 @@ export const InnerProgressBar = styled(StyledProgressBar)<{ $progress: number }>
   width: ${({ $progress }) => ($progress * progressBarWidth) / 100 + "rem"};
   background-color: ${({ theme }) => theme.dark.contrast500};
 `;
-

@@ -1,10 +1,10 @@
-import Card from "../../../ui/Card/Card";
 import { MeasureProps } from "../../../ui/Measure/Measure";
-import Measure from "../../../ui/Measure/Measure";
+import Measure from "../../../ui/Measure";
 import { H2 } from "./Hightlight.styled";
 import { round } from "../../../../utils/number";
-import Compass from "./Compass/Compass";
-import ProgressBar from "./ProgressBar/ProgressBar";
+import Compass from "./Compass";
+import ProgressBar from "./ProgressBar";
+import Card from "../../../ui/Card";
 
 export const HIGHLIGHT_VARIANTS = {
   wind: "wind",
@@ -26,7 +26,7 @@ const Highlight: React.FC<HighlightProps> = ({
   variant,
 }) => {
   return (
-    <Card $desktopStyles={{width:"12rem"}}>
+    <Card $desktopStyles={{ width: "12rem" }}>
       <H2>{title}</H2>
       <Measure
         $variant={measure.$variant}

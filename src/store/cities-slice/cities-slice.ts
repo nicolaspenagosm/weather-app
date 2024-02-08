@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+
 export interface City {
     name: string,
     latitude: number,
@@ -11,6 +12,7 @@ export interface City {
 export interface CitiesState {
   cities: City[];
 }
+
 const initialState: CitiesState = {
   cities: [],
 };

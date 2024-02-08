@@ -11,10 +11,12 @@ const useDebounceHttpInput = (
   validateValue: (val: string) => boolean,
   delay:number
 ) => {
+
   const [value, setValue] = useState<string>("");
   const [debouncedValue, setDebouncedValue] = useState<string>("");
   const [isFetching, setIsFetching] = useState(false);
   const [isTouched, setIsTouched] = useState(false);
+
   const dispatch = useAppDispatch();
 
   const valueIsValid = validateValue(debouncedValue);
@@ -46,6 +48,7 @@ const useDebounceHttpInput = (
     };
 
     if (valueIsValid) sendRequest();
+
   }, [debouncedValue]);
 
   const valueChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {

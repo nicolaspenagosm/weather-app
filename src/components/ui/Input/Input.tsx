@@ -30,6 +30,7 @@ const Input: React.FC<InputProps> = ({
           marginRight: "0.25rem",
           marginLeft: "0.5rem",
         }}
+        alt="Magnifier"
       />
       <StyledInput
         placeholder="Search location"

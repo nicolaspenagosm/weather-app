@@ -31,7 +31,7 @@ const CityItem: React.FC<{ city: City; closeAndClearSideBar: () => void }> = ({
       }}
     >
       <p>{city.name}</p>
-      <img src={rightArrow} />
+      <img src={rightArrow} alt="Action arrow" />
       <p>
         <span>| </span> {city.country}
       </p>

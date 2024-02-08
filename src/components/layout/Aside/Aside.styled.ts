@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { Interpolation } from "styled-components";
 import { Styles } from "../../../App.styled";
 
 export interface Position {
@@ -69,3 +69,19 @@ export const Img = styled.img<Styles>`
  ${({ $styles }) => $styles};
 
 `
+
+export const searchBtnStyles: Interpolation<React.CSSProperties> = {
+  position: "absolute",
+  top: "2rem",
+  left: "2rem",
+};
+
+export const locationBtnStyles: Interpolation<React.CSSProperties> = {
+  position: "absolute",
+  top: "2rem",
+  right: "2rem",
+};
+
+export const asidePassingStyles: Interpolation<React.CSSProperties> = {
+  padding: "1rem 1rem 6rem 1rem",
+};

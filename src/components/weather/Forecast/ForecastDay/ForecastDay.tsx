@@ -22,7 +22,7 @@ const ForecastDay: React.FC<ForecastDayProps> = ({ day, icon, value }) => {
     >
       <StyledForecastDay>
         <p>{day}</p>
-        <img src={getIconUrl(icon, "2")} draggable={false} />
+        <img src={getIconUrl(icon, "2")} draggable={false} alt="Weather icon" />
         <DIV>
           <i>{convertTemp(+value.max, tempUnit) + tempUnit}</i>
           <i>{convertTemp(+value.min, tempUnit) + tempUnit}</i>

@@ -1,10 +1,16 @@
-import { Interpolation } from "styled-components";
 import cloud1Left from "../../../assets/cloud-1-left.svg";
 import cloud2Left from "../../../assets/cloud-2-left.svg";
 import cloud1Right from "../../../assets/cloud-1-right.svg";
 import cloud2Right from "../../../assets/cloud-2-right.svg";
 import locationPin from "../../../assets/location-pin.svg";
-import { StyledAside, P, BackgroundImage } from "./Aside.styled";
+import {
+  StyledAside,
+  P,
+  BackgroundImage,
+  asidePassingStyles,
+  searchBtnStyles,
+  locationBtnStyles,
+} from "./Aside.styled";
 import Measure from "../../ui/Measure";
 import Button from "../../ui/Button";
 import IconButton from "../../ui/IconButton";
@@ -24,36 +30,15 @@ import {
   fetch5DaysForecast,
   fetchWeatherAction,
 } from "../../../store/weather-slice/weather-actions";
-import useHttp from "../../../hooks/use-http";
-
-const searchBtnStyles: Interpolation<React.CSSProperties> = {
-  position: "absolute",
-  top: "2rem",
-  left: "2rem",
-};
-
-const locationBtnStyles: Interpolation<React.CSSProperties> = {
-  position: "absolute",
-  top: "2rem",
-  right: "2rem",
-};
-
-const asidePassingStyles: Interpolation<React.CSSProperties> = {
-  padding: "1rem 1rem 6rem 1rem",
-};
 
 const Aside: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { isLoading, error, sendRequest } = useHttp({
-    loading: true,
-    error: null,
-  });
 
   useEffect(() => {
     const onInit = async () => {
       const currentLocation = await getLocation();
       if (currentLocation) {
-        sendRequest(() => dispatch(fetchWeatherAction(currentLocation)));
+        dispatch(fetchWeatherAction(currentLocation));
         dispatch(fetch5DaysForecast(currentLocation));
       }
     };
@@ -79,7 +64,7 @@ const Aside: React.FC = () => {
   const loadCurrentLocation = async () => {
     const currentLocation = await getLocation();
     if (currentLocation) {
-      sendRequest(() => dispatch(fetchWeatherAction(currentLocation)));
+      dispatch(fetchWeatherAction(currentLocation));
       dispatch(fetch5DaysForecast(currentLocation));
     }
   };

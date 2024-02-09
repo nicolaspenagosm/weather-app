@@ -29,7 +29,7 @@ export const StyledMeasure = styled.div<Variant & Styles>`
       if ($variant === "medium") return "1rem";
       return "2rem";
     }};
-    color: ${({ theme }) => theme.dark.accent700};
+    color: ${({ theme }) => theme.accent700};
   }
 `;
 export const P = styled.p`

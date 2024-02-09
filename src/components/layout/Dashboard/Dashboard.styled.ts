@@ -8,8 +8,10 @@ export const StyledDashboard = styled.main`
   align-items: center;
   gap: 2rem;
   padding: 2rem;
-  background-color: ${({ theme }) => theme.dark.primary500};
+  background-color: ${({ theme }) => theme.primary500};
+  min-height: 36rem;
   @media (min-width: ${({ theme }) => theme.mobileBreakpoint}px) {
     width: 75%;
+    min-height: auto;
   }
 `;

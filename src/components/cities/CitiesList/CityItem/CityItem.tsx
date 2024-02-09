@@ -1,16 +1,20 @@
 import rightArrow from "../../../../assets/right-arrow.svg";
+import rightArrowLight from "../../../../assets/right-arrow-light.svg";
 import { StyledCityItem } from "./CityItem.styled";
 import { City } from "../../../../store/cities-slice/cities-slice";
-import { useAppDispatch } from "../../../../store";
+import { RootState, useAppDispatch } from "../../../../store";
 import {
   fetchWeatherAction,
   fetch5DaysForecast,
 } from "../../../../store/weather-slice/weather-actions";
+import { useSelector } from "react-redux";
 
 const CityItem: React.FC<{ city: City; closeAndClearSideBar: () => void }> = ({
   city,
   closeAndClearSideBar,
 }) => {
+  const isDark = useSelector((state: RootState) => state.ui.isDark);
+
   const dispatch = useAppDispatch();
 
   const onCitySelected = async () => {
@@ -31,7 +35,7 @@ const CityItem: React.FC<{ city: City; closeAndClearSideBar: () => void }> = ({
       }}
     >
       <p>{city.name}</p>
-      <img src={rightArrow} alt="Action arrow" />
+      <img src={isDark ? rightArrow : rightArrowLight} alt="Action arrow" />
       <p>
         <span>| </span> {city.country}
       </p>

@@ -8,33 +8,29 @@ export interface Styles {
 export const darkTheme = {
   mobileBreakpoint: 845,
   tabletBreakpoint: 1150,
-  dark: {
-    primary400: "#1E213A",
-    primary500: "#100E1D",
-    accentBtn500: "#E7E7EB",
-    accent500: "#E7E7EB",
-    accent600: "#A09FB1",
-    accent700: "#6E707A",
-    accent800: "#61636D",
-    contrast500: "#EB6E4B",
-    contrast900: "#642A19",
-  },
+  primary400: "#1E213A",
+  primary500: "#100E1D",
+  accentBtn500: "#E7E7EB",
+  accent500: "#E7E7EB",
+  accent600: "#A09FB1",
+  accent700: "#6E707A",
+  accent800: "#61636D",
+  contrast500: "#EB6E4B",
+  contrast900: "#642A19",
 };
 
 export const lightTheme = {
   mobileBreakpoint: 845,
   tabletBreakpoint: 1150,
-  dark: {
-    primary400: "#FFF",
-    primary500: "#FAF5D5",
-    accentBtn500: "#E7E7EB",
-    accent500: "#100E1D",
-    accent600: "#70738C",
-    accent700: "#6E707A",
-    accent800: "#61636D",
-    contrast500: "#EB6E4B",
-    contrast900: "#642A19",
-  },
+  primary400: "#D8F0FA",
+  primary500: "#FBF4E2",
+  accentBtn500: "#E7E7EB",
+  accent500: "#555169",
+  accent600: "#70738C",
+  accent700: "#6E707A",
+  accent800: "#61636D",
+  contrast500: "#EB6E4B",
+  contrast900: "#642A19",
 };
 
 export const GlobalStyle = createGlobalStyle`
@@ -66,7 +62,7 @@ export const GlobalStyle = createGlobalStyle`
     vertical-align: baseline;
     font-family: 'Raleway', sans-serif;
     font-size: 14px;
-    color: ${({ theme }) => theme.dark.accent500};
+    color: ${({ theme }) => theme.accent500};
   }
   /* HTML5 display-role reset for older browsers */
   article, aside, details, figcaption, figure, 

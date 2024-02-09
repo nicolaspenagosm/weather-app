@@ -15,14 +15,14 @@ const Root = styled.div`
 `;
 
 function App() {
-  const { isDark, toggleTheme } = useDarkMode();
+  const {  isDark, toggleTheme } = useDarkMode();
 
   return (
     <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
       <GlobalStyle />
       <Root>
-        <Aside />
-        <Dashboard  toggleTheme={ toggleTheme }/>
+        <Aside  />
+        <Dashboard  toggleTheme={ toggleTheme } />
       </Root>
     </ThemeProvider>
   );

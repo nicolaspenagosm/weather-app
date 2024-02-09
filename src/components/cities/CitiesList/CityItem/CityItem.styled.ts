@@ -24,7 +24,7 @@ export const StyledCityItem = styled.li<Styles>`
   }
   &:hover {
     border: solid 1px;
-    border-color: ${({ theme }) => theme.dark.accent500};
+    border-color: ${({ theme }) => theme.accent500};
     img {
       opacity: 1;
     }
@@ -38,7 +38,7 @@ export const StyledCityItem = styled.li<Styles>`
       margin-right: 2rem;
     }
     span {
-      color: ${({ theme }) => theme.dark.contrast500};
+      color: ${({ theme }) => theme.contrast500};
     }
   }
 `;

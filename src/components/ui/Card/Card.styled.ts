@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Styles } from "../../../App.styled";
 
 export const StyledCard = styled.article<Styles>`
-  background-color: ${({ theme }) => theme.dark.primary400};
+  background-color: ${({ theme }) => theme.primary400};
   display: flex;
   flex-direction: column;
   padding: 1.5rem;

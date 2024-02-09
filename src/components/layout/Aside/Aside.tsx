@@ -4,6 +4,11 @@ import cloud2Left from "../../../assets/cloud-2-left.svg";
 import cloud1Right from "../../../assets/cloud-1-right.svg";
 import cloud2Right from "../../../assets/cloud-2-right.svg";
 import locationPin from "../../../assets/location-pin.svg";
+import cloud1LeftLight from "../../../assets/cloud-1-left-light.svg";
+import cloud2LeftLight from "../../../assets/cloud-2-left-light.svg";
+import cloud1RightLight from "../../../assets/cloud-1-right-light.svg";
+import cloud2RightLight from "../../../assets/cloud-2-right-light.svg";
+
 import {
   StyledAside,
   P,
@@ -35,7 +40,8 @@ import {
 const ANIM_CLASS = "animate__animated  animate__bounceIn";
 const Aside: React.FC = () => {
   const dispatch = useAppDispatch();
-  
+  const isDark = useSelector((state:RootState)=>state.ui.isDark);
+
   useEffect(() => {
     const onInit = async () => {
       const currentLocation = await getLocation();
@@ -87,25 +93,25 @@ const Aside: React.FC = () => {
   return (
     <StyledAside $styles={asideStyles}>
       <BackgroundImage
-        src={cloud1Left}
+        src={isDark ? cloud1Left : cloud1LeftLight}
         $top="5rem"
         $left="0"
         alt="Decorative cloud in the background"
       />
       <BackgroundImage
-        src={cloud2Left}
+        src={isDark ? cloud2Left : cloud2LeftLight}
         $top="15rem"
         $left="0"
         alt="Decorative cloud in the background"
       />
       <BackgroundImage
-        src={cloud1Right}
+        src={isDark ? cloud1Right : cloud1RightLight}
         $top="12rem"
         $right="0"
         alt="Decorative cloud in the background"
       />
       <BackgroundImage
-        src={cloud2Right}
+        src={isDark ? cloud2Right : cloud2RightLight}
         $top="3rem"
         $right="0"
         alt="Decorative cloud in the background"

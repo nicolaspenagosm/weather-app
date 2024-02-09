@@ -7,7 +7,7 @@ export interface LoaderSize {
 export const StyledLoaderSpinner = styled.span<LoaderSize>`
   width: ${({ $loaderSize: size }) => size}px;
   height: ${({ $loaderSize: size }) => size}px;
-  border: 3px solid ${({ theme }) => theme.dark.accent500};
+  border: 3px solid ${({ theme }) => theme.accent500};
   border-radius: 50%;
   display: inline-block;
   position: relative;
@@ -19,7 +19,7 @@ export const StyledLoaderSpinner = styled.span<LoaderSize>`
     position: absolute;
     left: 0;
     top: 0;
-    background: ${({ theme }) => theme.dark.contrast500};
+    background: ${({ theme }) => theme.contrast500};
     width: ${({ $loaderSize: size }) => size / 3}px;
     height: ${({ $loaderSize: size }) => size / 3}px;
     transform: translate(-50%, 50%);
@@ -42,20 +42,20 @@ export const StyledLoaderCloud = styled.span<LoaderSize>`
   margin: auto;
   background-image: radial-gradient(
       circle 25px at 25px 25px,
-      ${({ theme }) => theme.dark.accent500} 100%,
+      ${({ theme }) => theme.accent500} 100%,
       transparent 0
     ),
     radial-gradient(
       circle 50px at 50px 50px,
-      ${({ theme }) => theme.dark.accent500} 100%,
+      ${({ theme }) => theme.accent500} 100%,
       transparent 0
     ),
     radial-gradient(
       circle 25px at 25px 25px,
-      ${({ theme }) => theme.dark.accent500} 100%,
+      ${({ theme }) => theme.accent500} 100%,
       transparent 0
     ),
-    linear-gradient(${({ theme }) => theme.dark.accent500} 50px, transparent 0);
+    linear-gradient(${({ theme }) => theme.accent500} 50px, transparent 0);
   background-size: 50px 50px, 100px 76px, 50px 50px, 120px 40px;
   background-position: 0px 30px, 37px 0px, 122px 30px, 25px 40px;
   background-repeat: no-repeat;
@@ -69,55 +69,55 @@ export const StyledLoaderCloud = styled.span<LoaderSize>`
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    background-color: ${({ theme }) => theme.dark.contrast500};
+    background-color: ${({ theme }) => theme.contrast500};
     background-image: radial-gradient(
         circle 8px at 18px 18px,
-        ${({ theme }) => theme.dark.accent500} 100%,
+        ${({ theme }) => theme.accent500} 100%,
         transparent 0
       ),
       radial-gradient(
         circle 4px at 18px 0px,
-        ${({ theme }) => theme.dark.accent500} 100%,
+        ${({ theme }) => theme.accent500} 100%,
         transparent 0
       ),
       radial-gradient(
         circle 4px at 0px 18px,
-        ${({ theme }) => theme.dark.accent500} 100%,
+        ${({ theme }) => theme.accent500} 100%,
         transparent 0
       ),
       radial-gradient(
         circle 4px at 36px 18px,
-        ${({ theme }) => theme.dark.accent500} 100%,
+        ${({ theme }) => theme.accent500} 100%,
         transparent 0
       ),
       radial-gradient(
         circle 4px at 18px 36px,
-        ${({ theme }) => theme.dark.accent500} 100%,
+        ${({ theme }) => theme.accent500} 100%,
         transparent 0
       ),
       radial-gradient(
         circle 4px at 30px 5px,
-        ${({ theme }) => theme.dark.accent500} 100%,
+        ${({ theme }) => theme.accent500} 100%,
         transparent 0
       ),
       radial-gradient(
         circle 4px at 30px 5px,
-        ${({ theme }) => theme.dark.accent500} 100%,
+        ${({ theme }) => theme.accent500} 100%,
         transparent 0
       ),
       radial-gradient(
         circle 4px at 30px 30px,
-        ${({ theme }) => theme.dark.accent500} 100%,
+        ${({ theme }) => theme.accent500} 100%,
         transparent 0
       ),
       radial-gradient(
         circle 4px at 5px 30px,
-        ${({ theme }) => theme.dark.accent500} 100%,
+        ${({ theme }) => theme.accent500} 100%,
         transparent 0
       ),
       radial-gradient(
         circle 4px at 5px 5px,
-        ${({ theme }) => theme.dark.accent500} 100%,
+        ${({ theme }) => theme.accent500} 100%,
         transparent 0
       );
     background-repeat: no-repeat;
@@ -132,55 +132,55 @@ export const StyledLoaderCloud = styled.span<LoaderSize>`
     width: 24px;
     height: 24px;
     border-radius: 50%;
-    background-color: ${({ theme }) => theme.dark.contrast500};
+    background-color: ${({ theme }) => theme.contrast500};
     background-image: radial-gradient(
         circle 5px at 12px 12px,
-        ${({ theme }) => theme.dark.accent500} 100%,
+        ${({ theme }) => theme.accent500} 100%,
         transparent 0
       ),
       radial-gradient(
         circle 2.5px at 12px 0px,
-        ${({ theme }) => theme.dark.accent500} 100%,
+        ${({ theme }) => theme.accent500} 100%,
         transparent 0
       ),
       radial-gradient(
         circle 2.5px at 0px 12px,
-        ${({ theme }) => theme.dark.accent500} 100%,
+        ${({ theme }) => theme.accent500} 100%,
         transparent 0
       ),
       radial-gradient(
         circle 2.5px at 24px 12px,
-        ${({ theme }) => theme.dark.accent500} 100%,
+        ${({ theme }) => theme.accent500} 100%,
         transparent 0
       ),
       radial-gradient(
         circle 2.5px at 12px 24px,
-        ${({ theme }) => theme.dark.accent500} 100%,
+        ${({ theme }) => theme.accent500} 100%,
         transparent 0
       ),
       radial-gradient(
         circle 2.5px at 20px 3px,
-        ${({ theme }) => theme.dark.accent500} 100%,
+        ${({ theme }) => theme.accent500} 100%,
         transparent 0
       ),
       radial-gradient(
         circle 2.5px at 20px 3px,
-        ${({ theme }) => theme.dark.accent500} 100%,
+        ${({ theme }) => theme.accent500} 100%,
         transparent 0
       ),
       radial-gradient(
         circle 2.5px at 20px 20px,
-        ${({ theme }) => theme.dark.accent500} 100%,
+        ${({ theme }) => theme.accent500} 100%,
         transparent 0
       ),
       radial-gradient(
         circle 2.5px at 3px 20px,
-        ${({ theme }) => theme.dark.accent500} 100%,
+        ${({ theme }) => theme.accent500} 100%,
         transparent 0
       ),
       radial-gradient(
         circle 2.5px at 3px 3px,
-        ${({ theme }) => theme.dark.accent500} 100%,
+        ${({ theme }) => theme.accent500} 100%,
         transparent 0
       );
     background-repeat: no-repeat;
@@ -222,8 +222,8 @@ export const StyledProgressLoader = styled.div`
   top: 0;
   height: 4px;
   width: 100%;
-  --c: no-repeat linear-gradient(${({ theme }) => theme.dark.contrast500} 0 0);
-  background: var(--c), var(--c), ${({ theme }) => theme.dark.contrast900};
+  --c: no-repeat linear-gradient(${({ theme }) => theme.contrast500} 0 0);
+  background: var(--c), var(--c), ${({ theme }) => theme.contrast900};
   background-size: 60% 100%;
   animation: l16 3s infinite;
 

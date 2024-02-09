@@ -5,7 +5,7 @@ export const StyledLogo = styled.div`
   right: 1.5rem;
   padding: 0.5rem 1.25rem 0.5rem;
   border-radius: 0.5rem;
-  background-color: ${({ theme }) => theme.dark.contrast500};
+  background-color: ${({ theme }) => theme.contrast500};
   img {
     width: 169px;
     height: 35px;

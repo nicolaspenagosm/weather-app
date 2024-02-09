@@ -14,7 +14,7 @@ export const StyledAside = styled.aside<Styles>`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: ${({ theme }) => theme.dark.primary400};
+  background-color: ${({ theme }) => theme.primary400};
   min-height: 36rem;
   @media (min-width: ${({ theme }) => theme.mobileBreakpoint}px) {
     width: 25%;
@@ -24,7 +24,7 @@ export const StyledAside = styled.aside<Styles>`
 
 export const P = styled.p`
   margin-top: 3rem;
-  color: ${({ theme }) => theme.dark.accent600};
+  color: ${({ theme }) => theme.accent600};
 `;
 
 export const BackgroundImage = styled.img.attrs(({ src, alt }) => ({
@@ -49,7 +49,7 @@ export const Footer = styled.footer`
   gap: 0.5rem;
   p{
     font-size: 0.75rem;
-    color: ${({ theme }) => theme.dark.accent600};
+    color: ${({ theme }) => theme.accent600};
   }
   div{
     display: flex;

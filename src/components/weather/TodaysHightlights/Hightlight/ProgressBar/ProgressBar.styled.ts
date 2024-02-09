@@ -23,11 +23,11 @@ const StyledProgressBar = styled.div`
 
 export const OuterProgressBar = styled(StyledProgressBar)`
   width: ${progressBarWidth + "rem"};
-  background-color: ${({ theme }) => theme.dark.accent500};
+  background-color: ${({ theme }) => theme.accent500};
 `;
 
 export const InnerProgressBar = styled(StyledProgressBar)<{ $progress: number }>`
   transition: all ease-in 500ms;
   width: ${({ $progress }) => ($progress * progressBarWidth) / 100 + "rem"};
-  background-color: ${({ theme }) => theme.dark.contrast500};
+  background-color: ${({ theme }) => theme.contrast500};
 `;

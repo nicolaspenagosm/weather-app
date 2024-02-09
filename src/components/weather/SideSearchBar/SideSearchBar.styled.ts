@@ -8,7 +8,7 @@ interface SearchBarProps extends Styles{
 
 export const StyledSideSearchBar = styled.aside<SearchBarProps>`
   position: absolute;
-  background-color: ${({ theme }) => theme.dark.primary400};
+  background-color: ${({ theme }) => theme.primary400};
   height: 100dvh;
   width: 100%;
   z-index: 20;
@@ -50,7 +50,7 @@ export const StyledSideSearchBar = styled.aside<SearchBarProps>`
 
 export const Button = styled.button`
   background-color: transparent;
-  color: ${({ theme }) => theme.dark.accent500};
+  color: ${({ theme }) => theme.accent500};
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
@@ -58,6 +58,6 @@ export const Button = styled.button`
   right: 1rem;
   top: 1rem;
   &:hover{
-    color: ${({ theme }) => theme.dark.accent600};
+    color: ${({ theme }) => theme.accent600};
   } 
 `;

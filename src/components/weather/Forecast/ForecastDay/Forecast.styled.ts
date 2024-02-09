@@ -23,6 +23,6 @@ export const DIV = styled.div`
   flex-direction: row;
   justify-content: space-between;
   i:last-child {
-    color: ${({ theme }) => theme.dark.accent600};
+    color: ${({ theme }) => theme.accent600};
   }
 `;

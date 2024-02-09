@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const StyledToggleUnit = styled.div`
   display: flex;
+  margin-left: auto;
   gap: 0.5rem;
   
   @media (min-width: ${({ theme }) => theme.mobileBreakpoint}px) {

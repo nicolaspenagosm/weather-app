@@ -58,9 +58,7 @@ export const calculateDateIndx = (
 
   if (mod === 0) return index - rightToLeftNoonIdx;
   const leftToRightNoonIdex = measPerDay - rightToLeftNoonIdx;
-  if (mod >= rightToLeftNoonIdx)
-    return (
-      (Math.floor(index / measPerDay) - 1) * measPerDay + leftToRightNoonIdex
-    );
+  if (mod >= leftToRightNoonIdex)
+    return Math.floor(index / measPerDay) * measPerDay + leftToRightNoonIdex;
   return index;
 };

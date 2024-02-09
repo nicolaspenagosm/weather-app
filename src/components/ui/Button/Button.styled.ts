@@ -3,7 +3,7 @@ import { Styles } from "../../../App.styled";
 
 export const BaseButton = styled.button<Styles>`
   background-color: ${({ theme }) => theme.dark.accent700};
-  color: ${({ theme }) => theme.dark.accent500};
+  color: ${({ theme }) => theme.dark.accentBtn500};
   border: none;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   cursor: pointer;
@@ -25,4 +25,8 @@ export const StyledIconButton = styled(BaseButton)`
   border-radius: 50%;
   height: 2rem;
   width: 2rem;
+  i{
+    color: ${({ theme }) => theme.dark.accentBtn500};
+  }
+
 `;

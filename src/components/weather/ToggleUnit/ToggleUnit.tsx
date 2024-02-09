@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 
 const ToggleUnit: React.FC = () => {
   const tempUnit = useSelector((state: RootState) => state.weather.tempUnit);
-  
+
   const dispatch = useAppDispatch();
   const setTempUnit = (tempUnit: WeatherState["tempUnit"]) => {
     dispatch(weatherActions.setTempUnit(tempUnit));
@@ -25,6 +25,7 @@ const ToggleUnit: React.FC = () => {
         $styles={{
           opacity: tempUnit === "°C" ? 0.5 : 1,
         }}
+        title="Convert to celsius"
       />
       <IconButton
         variant="fahrenheit"
@@ -34,6 +35,7 @@ const ToggleUnit: React.FC = () => {
         $styles={{
           opacity: tempUnit === "°F" ? 0.5 : 1,
         }}
+        title="Convert to fahrenheit"
       />
     </StyledToggleUnit>
   );

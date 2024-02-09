@@ -72,6 +72,7 @@ const SideSearchBar: React.FC<{
           onClick={() => {
             closeAndClearSideBar();
           }}
+          title="Close side bar"
         >
           x
         </Button>

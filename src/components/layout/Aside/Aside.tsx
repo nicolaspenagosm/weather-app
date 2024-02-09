@@ -1,3 +1,4 @@
+import "animate.css";
 import cloud1Left from "../../../assets/cloud-1-left.svg";
 import cloud2Left from "../../../assets/cloud-2-left.svg";
 import cloud1Right from "../../../assets/cloud-1-right.svg";
@@ -31,9 +32,10 @@ import {
   fetchWeatherAction,
 } from "../../../store/weather-slice/weather-actions";
 
+const ANIM_CLASS = "animate__animated  animate__bounceIn";
 const Aside: React.FC = () => {
   const dispatch = useAppDispatch();
-
+  
   useEffect(() => {
     const onInit = async () => {
       const currentLocation = await getLocation();
@@ -52,6 +54,7 @@ const Aside: React.FC = () => {
   const tempUnit = useSelector((state: RootState) => state.weather.tempUnit);
   const [imgOpacity, setImageOpacity] = useState("0");
   const [showSideBar, setShowSideBar] = useState(false);
+  const [animClass, setAnimClass] = useState("");
 
   const closeSideBar = () => {
     setShowSideBar(false);
@@ -72,9 +75,13 @@ const Aside: React.FC = () => {
   const now = new Date();
 
   useEffect(() => {
+    setAnimClass(ANIM_CLASS);
     setTimeout(() => {
       setImageOpacity("1");
     }, 150);
+    setTimeout(() => {
+      setAnimClass("");
+    }, 1000);
   }, [currentWeather]);
 
   return (
@@ -133,8 +140,9 @@ const Aside: React.FC = () => {
             onClick={() => {
               loadCurrentLocation();
             }}
+            title="Load my current location"
           />
-          <Footer>
+          <Footer className={animClass}>
             <p>Today &#8226; {parseDate(now)}</p>
             <div>
               <img src={locationPin} />

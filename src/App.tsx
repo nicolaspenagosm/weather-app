@@ -1,7 +1,8 @@
 import styled, { ThemeProvider } from "styled-components";
-import { GlobalStyle, theme } from "./App.styled";
+import { GlobalStyle, darkTheme, lightTheme } from "./App.styled";
 import Aside from "./components/layout/Aside";
 import Dashboard from "./components/layout/Dashboard";
+import useDarkMode from "./hooks/use-dark-mode";
 
 const Root = styled.div`
   display: flex;
@@ -14,13 +15,14 @@ const Root = styled.div`
 `;
 
 function App() {
+  const { isDark, toggleTheme } = useDarkMode();
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
       <GlobalStyle />
       <Root>
         <Aside />
-        <Dashboard />
+        <Dashboard  toggleTheme={ toggleTheme }/>
       </Root>
     </ThemeProvider>
   );

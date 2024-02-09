@@ -3,11 +3,12 @@ import TodaysHighlights from "../../weather/TodaysHightlights";
 import Forecast from "../../weather/Forecast";
 import Logo from "../../ui/Logo";
 import Loader from "../../ui/Loader";
-import  ToggleUnit  from "../../weather/ToggleUnit";
+import DarkModeToggle from "../../ui/DarkModeToggle";
+import ToggleUnit from "../../weather/ToggleUnit";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
 
-const Dashboard: React.FC = () => {
+const Dashboard: React.FC<{ toggleTheme: () => void }> = ({ toggleTheme }) => {
   const currentWeather = useSelector(
     (state: RootState) => state.weather.currentWeather
   );
@@ -21,6 +22,7 @@ const Dashboard: React.FC = () => {
       {currentWeather ? (
         <>
           {isFetchingWeather && <Loader variant="progress" />}
+          <DarkModeToggle toggleTheme={toggleTheme} />
           <ToggleUnit />
           <Forecast />
           <TodaysHighlights />

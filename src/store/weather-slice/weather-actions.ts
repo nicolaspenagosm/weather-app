@@ -8,7 +8,7 @@ import {
   weatherActions,
 } from "./weather-slice";
 import { getMostRepeatedEl, setOrAddCount } from "../../utils/map";
-import { calculateDateIndx, gateTodayLimitIndex } from "../../utils/date";
+import { calculateDateIndx, getTodayLimitIndex } from "../../utils/date";
 
 export const fetchWeatherAction = (params: Position) => {
   return async (dispatch: Dispatch) => {
@@ -53,8 +53,8 @@ export const fetch5DaysForecast = (params: Position) => {
       date: data.dt * 1000,
       dateTxt: data.dt_txt,
     }));
-
-    const todayLimitIndex = gateTodayLimitIndex(forecast);
+    console.log(forecast);
+    const todayLimitIndex = getTodayLimitIndex(forecast);
 
     // Dummy first element to make esier working with % (this el is no taken into account)
     forecast = [forecast[0], ...forecast.slice(todayLimitIndex)];

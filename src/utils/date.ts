@@ -41,7 +41,7 @@ export const getMilisUntilEndOfTheDay = (date: Date) => {
   return dayInMilis - ((date.getTime() - dayInMilis) % dayInMilis);
 };
 
-export const gateTodayLimitIndex = (forecast: WeatherForecast[]) => {
+export const getTodayLimitIndex = (forecast: WeatherForecast[]) => {
   const now = new Date();
   const milisUntilEndOfTheDay = getMilisUntilEndOfTheDay(now);
   const endOfTheDay = now.getTime() + milisUntilEndOfTheDay;
@@ -59,6 +59,8 @@ export const calculateDateIndx = (
   if (mod === 0) return index - rightToLeftNoonIdx;
   const leftToRightNoonIdex = measPerDay - rightToLeftNoonIdx;
   if (mod >= rightToLeftNoonIdx)
-    return Math.floor(index / measPerDay) * measPerDay + leftToRightNoonIdex;
+    return (
+      (Math.floor(index / measPerDay) - 1) * measPerDay + leftToRightNoonIdex
+    );
   return index;
 };
